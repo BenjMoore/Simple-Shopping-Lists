@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Head content -->
+</head>
+<body>
+    <main>
+        <h2>Theme Settings</h2>
+        <label>
+            <input type="radio" name="theme" value="light" id="light-mode"> Light Mode
+        </label>
+        <label>
+            <input type="radio" name="theme" value="dark" id="dark-mode"> Dark Mode
+        </label>
+
+        <h2>Username Settings</h2>
+        <form id="usernameForm">        
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <button type="submit">Set Username</button>
+            <div id="message"></div>
+        </form>
+
+       
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const lightModeRadio = document.getElementById('light-mode');
+            const darkModeRadio = document.getElementById('dark-mode');
+
+            // Check the current theme preference and set the radio buttons
+            const isDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (isDarkMode) {
+                darkModeRadio.checked = true;
+                document.body.classList.add('dark-mode');
+            } else {
+                lightModeRadio.checked = true;
+            }
+
+            // Add event listeners to radio buttons
+            lightModeRadio.addEventListener('change', function () {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('darkMode', 'false');
+            });
+
+            darkModeRadio.addEventListener('change', function () {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('darkMode', 'true');
+            });
+
+            // Handle username form submission
+            document.getElementById('usernameForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const username = document.getElementById('username').value;
+                const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+                fetch('/Settings/SetUsername', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': token
+                    },
+                    body: JSON.stringify(username)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        const messageDiv = document.getElementById('message');
+                        if (data.success) {
+                            messageDiv.innerText = "Username has been set.";
+                            messageDiv.style.color = "green";
+                        } else {
+                            messageDiv.innerText = "Error setting username.";
+                            messageDiv.style.color = "red";
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            });
+        });
+    </script>
+</body>
+</html>

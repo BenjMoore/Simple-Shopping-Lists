@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] Shopping..</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ICTPRG535_556.styles.css" asp-append-version="true" />
+</head>
+<body class="light-mode">
+    <div class="container">
+        @model List<SessionCartDTO>
+        @{
+            var loggedInUserId = ViewBag.LoggedInUserId as int?;
+        }
+        <script>
+            function updateQuantity(itemId, listId, quantityChange) {
+                $.ajax({
+                    url: '@Url.Action("UpdateQuantity", "Cart")',
+                    type: 'POST',
+                    data: {
+                        itemId: itemId,
+                        listId: listId,
+                        quantityChange: quantityChange
+                    },
+                    success: function (result) {
+                        location.reload();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+
+            function deleteProduce(itemId, listId, userId) {
+                $.ajax({
+                    url: '@Url.Action("DeleteProduce", "Cart")',
+                    type: 'POST',
+                    data: {
+                        itemId: itemId,
+                        listId: listId,
+                        userId: userId
+                    },
+                    success: function (result) {
+                        location.reload();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        </script>
+
+
+        <h2 style="text-align:center;">
+            <br /><br />
+            <a href="/Cart/CreateNewList?id=@loggedInUserId" class="button"><button class="btn btn-primary" style="margin-left:20px; margin-right:20px; margin-top:10px;">New List</button></a>
+            <a href="/Cart/Select" class="button"><button class="btn btn-primary" style="margin-left:20px; margin-right:20px; margin-top:10px;">Select / Delete List</button></a>
+            <a href="/" class="button"><button class="btn btn-primary" style="margin-left:20px; margin-right:20px; margin-top:10px;">Add Item</button></a>
+        </h2>
+    </div>
+
+    <div class="container">
+
+      
+
+        <main role="main" class="pb-3">
+            <section id="Table" style="left:0;">
+                <h2 style="text-align:center">Selected List</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Price</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>
+                                        @item.Quantity
+                                    <button style="margin-left:20px" class="btn btn-light" onclick="updateQuantity(@item.ItemID, @item.ListID, -1)">-</button>
+                                    <button class="btn btn-light" onclick="updateQuantity(@item.ItemID, @item.ListID, 1)">+</button>
+                                </td>
+                                <td>@item.Unit</td>
+                                <td>$@item.Price </td>
+                                
+                            </tr>
+                            }          
+                    </tbody>
+                </table>
+                <div>Total Price: $@(ViewData["TotalPrice"])</div>
+            </section>
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

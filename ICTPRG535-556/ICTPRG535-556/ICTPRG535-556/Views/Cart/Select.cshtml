@@ -1,0 +1,98 @@
+﻿@model List<ListDTO>
+@using DataMapper
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Head content -->
+</head>
+<body class="light-mode">
+    <div class="container">
+        @if (ViewBag.LoggedInUserId != null)
+        {
+            <a href="/Cart/CreateNewList?id=@ViewBag.LoggedInUserId" class="button">
+                <button class="btn btn-primary" style="margin-left:20px; margin-right:20px; margin-top:10px;">New List</button>
+            </a>
+        }
+    </div>
+
+    <script>
+        function deleteList(listId) {
+            $.ajax({
+                url: '@Url.Action("DeleteList", "Cart")',
+                type: 'POST',
+                data: { listId: listId },
+                success: function (result) {
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+
+        function updateListName(listId) {
+            var newListName = prompt("Enter new list name:");
+            if (newListName) {
+                $.ajax({
+                    url: '@Url.Action("UpdateListName", "Cart")',
+                    type: 'POST',
+                    data: {
+                        listId: listId,
+                        newListName: newListName
+                    },
+                    success: function (result) {
+                        if (result.success) {
+                            location.reload();
+                        } else {
+                            alert("Failed to update list name.");
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        }
+    </script>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <section id="Table" style="left:0;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>List ID</th>
+                            <th>Number of Items</th>
+                            <th>Total</th>
+                            <th>List Name</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var listGroup in Model.GroupBy(l => l.ListID))
+                        {
+                            var count = @listGroup.Count() - 1;
+                            var firstItem = listGroup.First();
+                            CartController cartController = new CartController();
+                            <tr>
+                                <td>@firstItem.ListID</td>
+                                <td>@count</td>
+                                <td> <p>@(ViewBag.ListTotalPrices != null ? ViewBag.ListTotalPrices[firstItem.ListID].ToString("C") : "$0.00")</p></td>
+
+                                <td>@firstItem.ListName</td>
+                                <td>
+                                    <button class="btn btn-primary" onclick="location.href='@Url.Action("SelectList", "Cart", new { listId = listGroup.Key })'">Select</button>
+                                    <button class="btn btn-danger" onclick="deleteList('@firstItem.ListID')">Delete</button>
+                                    <button class="btn btn-warning" onclick="updateListName('@firstItem.ListID')">Update Name</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+</body>
+</html>

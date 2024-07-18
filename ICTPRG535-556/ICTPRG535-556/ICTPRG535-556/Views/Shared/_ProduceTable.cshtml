@@ -1,0 +1,16 @@
+﻿@model List<ICTPRG535_556.Models.ProduceDTO>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.Name</td>
+        <td>@item.Unit</td>
+        <td>$@item.Price</td>
+        <td>
+            <form method="post" asp-action="AddToCart">
+                <input type="hidden" name="itemId" value="@item.ItemID" />
+                <button type="submit">Add to Cart</button>
+            </form>
+        </td>
+    </tr>
+}

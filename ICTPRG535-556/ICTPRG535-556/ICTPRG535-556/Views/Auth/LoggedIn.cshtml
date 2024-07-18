@@ -1,0 +1,9 @@
+﻿@{
+    ViewData["Title"] = "Logged In";
+}
+
+<h1 style="text-align:center;">Account</h1>
+<h2 style ="text-align:center;">Welcome, @ViewBag.Email</h2>
+<form style="text-align:center;" method="post" action="Logout">
+    <input  type="submit" value="Logout" class="btn btn-danger" />
+</form>

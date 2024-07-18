@@ -1,0 +1,161 @@
+:root {
+    --background-color: #ffffff; /* Light mode background color */
+    --text-color: #000000; /* Light mode text color */
+}
+
+.dark-mode {
+    --background-color: #111111; /* Dark mode background color */
+    --text-color: #ffffff; /* Dark mode text color */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    
+}
+
+header {
+    background-color: #145c9e;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+    nav ul li {
+        display: inline;
+        margin-right: 20px;
+    }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+main {
+    padding-top: 10px;
+}
+
+.cart {
+    width: 50%;
+    border-collapse: collapse;
+    left: 0px;
+}
+
+    .cart th, cart td {
+        border: 1px solid #0c4f6c;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .cart th {
+        background-color: #145c9e;
+        color: #fff;
+    }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+    table th, table td {
+        border: 1px solid #0c4f6c;
+        padding: 8px;
+        text-align: left;
+    }
+
+    table th {
+        background-color: #145c9e;
+        color: #fff;
+    }
+
+tbody tr:nth-child(even) {
+    background-color: #b8cdf8;
+}
+
+footer {
+    background-color: #145c9e;
+    color: #fff;
+    padding: 0px 0px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+.dark-mode body {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-mode header {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-mode nav ul li a {
+    color: #fff;
+}
+
+.dark-mode main {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-mode table th {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-mode tbody tr:nth-child(even) {
+    background-color: #666;
+}
+
+.dark-mode footer {
+    background-color: #333;
+    color: #fff;
+}
+
+.container {
+    color: #333;
+    padding: 0px;
+}
+
+.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+.logo {
+    width: 100px
+}
+
+.button {
+    color: white;
+}

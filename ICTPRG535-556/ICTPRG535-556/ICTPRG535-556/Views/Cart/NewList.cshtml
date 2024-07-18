@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] Shopping..</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ICTPRG535_556.styles.css" asp-append-version="true" />
+</head>
+<body class="light-mode">
+    <div class="container">
+        @model List<SessionCartDTO>
+        @{
+            var loggedInUserId = ViewBag.LoggedInUserId as int?;
+        }
+        <h2 style="text-align:center;">
+
+            <br /><br />
+
+            <a href="/Cart/CreateNewList?id=@loggedInUserId" class="button"><button class="btn btn-primary" style="margin-left:20px; margin-right:20px; margin-top:10px;">New List </a>
+            <a href="/Cart/Select" class="button"><button class="btn btn-primary" style="margin-left:20px; margin-right:20px; margin-top:10px;" />Select List</a>
+            <a href="/login" class="button"><button class="btn btn-primary" style="margin-left:20px; margin-right:20px; margin-top:10px;" />Delete List</a>
+            <a href="/" class="button"><button class="btn btn-primary" style="margin-left:20px; margin-right:20px; margin-top:10px;" />Add Item</a>
+        </h2>
+    </div>
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+
+
+
+            <section id="Table" style="left:0;">
+
+
+                <!-- Include jQuery library -->
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+                <!-- AJAX for deleting list item -->
+                <script>
+                    function deleteListItem(itemId, listId) {
+
+                        $.ajax({
+                            url: '@Url.Action("DeleteItem", "Cart")',
+                            type: 'POST',
+                            data: { itemId: itemId, listId: listId },
+                            success: function () {
+                                location.reload(); // Refresh the page after deletion
+                            },
+                            error: function () {
+                                alert('An error occurred while deleting the item.');
+                            }
+                        });
+
+                    }
+                </script>
+
+                <h2 style="text-align:center">Selected List</h2>
+                <!-- Your table to display list items -->
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Unit</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Unit</td>
+                                <td>$@item.Price</td>
+                                <td>
+                                    <!-- Button to delete list item -->
+                                    <button onclick="deleteListItem(@item.ItemID, @Model.First().ListID)">Delete</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <label for="listName">List Name:</label>
+                    <input type="text" id="listName" name="listName" />
+                    <div>Total Price: $@(ViewData["TotalPrice"])</div>
+
+
+
+                </table>
+
+    </div>
+    </section>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+</body>
+</html>
