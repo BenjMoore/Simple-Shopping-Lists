@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Git Repos\\ICTPRG553-554\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556.csproj": {}
+    "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556.csproj": {}
   },
   "projects": {
-    "D:\\Git Repos\\ICTPRG553-554\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556.csproj": {
+    "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Git Repos\\ICTPRG553-554\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556.csproj",
+        "projectUniqueName": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556.csproj",
         "projectName": "ICTPRG535-556",
-        "projectPath": "D:\\Git Repos\\ICTPRG553-554\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556.csproj",
-        "packagesPath": "C:\\Users\\Benjm\\.nuget\\packages\\",
-        "outputPath": "D:\\Git Repos\\ICTPRG553-554\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\obj\\",
+        "projectPath": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556.csproj",
+        "packagesPath": "C:\\Users\\Benjamin Moore\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Benjm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Benjamin Moore\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -56,11 +56,11 @@
             },
             "Microsoft.Data.SqlClient": {
               "target": "Package",
-              "version": "[5.2.0, )"
+              "version": "[5.2.1, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.3, )"
             }
           },
           "imports": [
@@ -82,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
