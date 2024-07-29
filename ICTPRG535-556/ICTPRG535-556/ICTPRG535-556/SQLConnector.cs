@@ -11,11 +11,236 @@ namespace DataMapper
     public class DataAccess
     {
         private readonly string connectionString;
+        private readonly string noDBOConnectionstring;
 
         public DataAccess()
         {
             this.connectionString = "Server=localhost;Database=ShoppingList;Trusted_Connection=True;TrustServerCertificate=True;";
+            this.noDBOConnectionstring = "Server=localhost;Trusted_Connection=True;TrustServerCertificate=True;";
         }
+        #region Initialise Database
+
+        public void InitializeDatabase()
+        {
+
+            // Create database if it doesn't exist
+            CreateDatabase();
+
+            CreateTableLists();
+            CreateTableUsers();
+            CreateTableProduce();
+
+            if (IsTableEmpty("Lists"))
+            {
+                PopulateLists();
+            }
+            if (IsTableEmpty("Produce"))
+            {
+                PopulateProduce();
+            }
+            if (IsTableEmpty("Users"))
+            {
+                PopulateUsers();
+            }
+            // Create tables if they don't exist
+        }
+        private bool IsTableEmpty(string tableName)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            // Basic validation for table name
+            if (string.IsNullOrWhiteSpace(tableName))
+            {
+                throw new ArgumentException("Table name cannot be null or empty.", nameof(tableName));
+            }
+
+            // Query to count rows in the table
+            string query = $"SELECT COUNT(*) FROM {tableName}";
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                try
+                {
+                    connection.Open(); // Ensure the connection is open
+                    int count = (int)command.ExecuteScalar();
+                    return count == 0;
+                }
+                catch (Exception ex)
+                {
+                    // Log the exception if necessary
+                    Console.WriteLine($"Error checking if table is empty: {ex.Message}");
+                    return false;
+                }
+            }
+        }
+
+
+        private void CreateDatabase()
+        {
+            using (SqlConnection connection = new SqlConnection(noDBOConnectionstring))
+            {
+                string query = @"
+            IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'ShoppingList')
+            BEGIN
+                CREATE DATABASE ShoppingList;
+            END;";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
+        private void CreateTableLists()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = @"
+            IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = 'Lists' AND xtype = 'U')
+            BEGIN
+                CREATE TABLE Lists (
+                    ListID INT PRIMARY KEY,
+                    UserID INT NOT NULL,
+                    ItemID INT NOT NULL,
+                    ListName NCHAR(50) NOT NULL,
+                    ListIndex INT IDENTITY(1,1) NOT NULL,
+                    Quantity INT NOT NULL,
+                    Price FLOAT NOT NULL
+                   
+                );
+            END;";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
+        private void CreateTableUsers()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = @"
+            IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = 'Users' AND xtype = 'U')
+            BEGIN
+                CREATE TABLE Users (
+                    UserID INT PRIMARY KEY,
+                    Email NCHAR(50) NOT NULL,
+                    Lists INT NOT NULL
+                );
+            END;";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
+        private void CreateTableProduce()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = @"
+            IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = 'Produce' AND xtype = 'U')
+            BEGIN
+                CREATE TABLE Produce (
+                    ItemID INT PRIMARY KEY,
+                    Name NCHAR(60) NOT NULL,
+                    Unit NCHAR(30) NOT NULL,
+                    Price VARCHAR(30) NOT NULL
+                );
+            END;";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
+        private void PopulateLists()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = @"
+            INSERT INTO Lists (ListID,UserID, ItemID, ListName, Quantity, Price) VALUES 
+            (1,1, 1, 'Example List', 2, 11.00);";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+        private void PopulateUsers()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = @"
+            INSERT INTO Users (UserID, Email, Lists) VALUES 
+            (1,'newuser@example.com', 1);";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+        private void PopulateProduce()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = @"
+            INSERT INTO Produce (ItemID, Name, Unit, Price) VALUES 
+            (1, 'Granny Smith Apples', '1kg', 5.50),
+            (2, 'Fresh tomatoes', '500g', 5.90),
+            (3, 'Watermelon', 'Whole', 6.60),
+            (4, 'Cucumber', '1 whole', 1.90),
+            (5, 'Red potato washed', '1kg', 4.00),   
+            (6, 'Red tipped bananas', '1kg', 4.90),
+            (7, 'Red onion', '1kg', 3.50),
+            (8, 'Carrots', '1kg', 2.00),
+            (9, 'Iceburg Lettuce', '1', 2.50),
+            (10, 'Helga''s Wholemeal', '1', 3.70),
+            (11, 'Free range chicken', '1kg', 7.50),
+            (12, 'Manning Valley 6-pk', '6 eggs', 3.60),
+            (13, 'A2 light milk', '1 litre', 2.90),
+            (14, 'Chobani Strawberry Yoghurt', '1', 1.50),
+            (15, 'Lurpak Salted Blend', '250g', 5.00),
+            (16, 'Bega Farmers Tasty', '250g', 4.00),
+            (17, 'Babybel Mini', '100g', 4.20),
+            (18, 'Cobram EVOO', '375ml', 8.00),
+            (19, 'Heinz Tomato Soup', '535g', 2.50),
+            (20, 'John West Tuna can', '95g', 1.50),
+            (21, 'Cadbury Dairy Milk', '200g', 5.00),
+            (22, 'Coca Cola', '2 litre', 2.85),
+            (23, 'Smith''s Original Share Pack Crisps', '170g', 3.29),
+            (24, 'Birds Eye Fish Fingers', '375g', 4.50),
+            (25, 'Berri Orange Juice', '2 litre', 6.00),
+            (26, 'Vegemite', '380g', 6.00),
+            (27, 'Cheddar Shapes', '175g', 2.00),
+            (28, 'Colgate Total Toothpaste Original', '110g', 3.50),
+            (29, 'Milo Chocolate Malt', '200g', 4.00),
+            (30, 'Weet Bix Saniatarium Organic', '750g', 5.33),
+            (31, 'Lindt Excellence 70% Cocoa Block', '100g', 4.25),
+            (32, 'Original Tim Tams Choclate', '200g', 3.65),
+            (33, 'Philadelphia Original Cream Cheese', '250g', 4.30),
+            (34, 'Moccana Classic Instant Medium Roast', '100g', 6.00),
+            (35, 'Capilano Squeezable Honey', '500g', 7.35),
+            (36, 'Nutella jar', '400g', 4.00),
+            (37, 'Arnott''s Scotch Finger', '250g', 2.85),
+            (38, 'South Cape Greek Feta', '200g', 5.00),
+            (39, 'Sacla Pasta Tomato Basil Sauce', '420g', 4.50),
+            (40, 'Primo English Ham', '100g', 3.00),
+            (41, 'Primo Short cut rindless Bacon', '175g', 5.00),
+            (42, 'Golden Circle Pineapple Pieces in natural juice', '440g', 3.25),
+            (43, 'San Remo Linguine Pasta No 1', '500g', 1.95);
+";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
+        #endregion
         #region GET
         public ArrayList GetUsers()
         {

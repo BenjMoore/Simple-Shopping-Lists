@@ -14,6 +14,7 @@ namespace ICTPRG535_556
         public static void Main(string[] args)
         {
             DataAccess con = new DataAccess();
+            con.InitializeDatabase();
             Console.Out.WriteLine(con.GetLists());
             CreateHostBuilder(args).Build().Run();
         }

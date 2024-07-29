@@ -7006,11 +7006,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Git Repos\\ICTPRG553-554\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556.csproj",
+      "projectUniqueName": "D:\\Git Repos\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556.csproj",
       "projectName": "ICTPRG535-556",
-      "projectPath": "D:\\Git Repos\\ICTPRG553-554\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556.csproj",
+      "projectPath": "D:\\Git Repos\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556.csproj",
       "packagesPath": "C:\\Users\\Benjm\\.nuget\\packages\\",
-      "outputPath": "D:\\Git Repos\\ICTPRG553-554\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\obj\\",
+      "outputPath": "D:\\Git Repos\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
