@@ -93,7 +93,7 @@ namespace ICTPRG535_556.Controllers
             var userId = HttpContext.Session.GetInt32("UserId");
 
             // Check if the selected list ID or user ID is null or invalid
-            if (!listId.HasValue || listId.Value <= 0 || !userId.HasValue || userId.Value <= 0)
+            if (!listId.HasValue || listId.Value <= -1|| !userId.HasValue || userId.Value <= 0)
             {
                 // Handle the case where no list is selected or user is not logged in
                 return RedirectToAction("Index", "Home"); // Redirect to a suitable page

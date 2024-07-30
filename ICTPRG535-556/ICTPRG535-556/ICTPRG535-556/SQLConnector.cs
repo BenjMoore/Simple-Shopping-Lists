@@ -99,11 +99,11 @@ namespace DataMapper
             IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = 'Lists' AND xtype = 'U')
             BEGIN
                 CREATE TABLE Lists (
-                    ListID INT PRIMARY KEY,
+                    ListID INT,
                     UserID INT NOT NULL,
                     ItemID INT NOT NULL,
-                    ListName NCHAR(50) NOT NULL,
-                    ListIndex INT IDENTITY(1,1) NOT NULL,
+                    ListName NCHAR(50),
+                    ListIndex INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
                     Quantity INT NOT NULL,
                     Price FLOAT NOT NULL
                    
@@ -163,7 +163,7 @@ namespace DataMapper
             {
                 string query = @"
             INSERT INTO Lists (ListID,UserID, ItemID, ListName, Quantity, Price) VALUES 
-            (1,1, 1, 'Example List', 2, 11.00);";
+            (0,1, 1, 'Example List', 2, 11.00);";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 connection.Open();
@@ -497,8 +497,6 @@ namespace DataMapper
             }
         }
 
-
-
         public List<ListDTO> GetListItems(int listId)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -515,7 +513,7 @@ namespace DataMapper
             {
                 dbConnection.Open();
                 // Insert a new list for the user
-                dbConnection.Execute("INSERT INTO Lists (UserID,ListID,ItemID,ListName,Price) VALUES (@UserId,@ListID,@ItemID,@ListName,@Price)", listDTO);
+                dbConnection.Execute("INSERT INTO Lists (UserID,ListID,ItemID,ListName,Quantity,Price) VALUES (@UserId,@ListID,@ItemID,@ListName,@Quantity,@Price)", listDTO);
             }
         }
         public string GetListNameById(int listId)
