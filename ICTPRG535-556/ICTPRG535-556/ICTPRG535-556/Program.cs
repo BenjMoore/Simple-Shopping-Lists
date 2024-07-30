@@ -57,7 +57,7 @@ namespace ICTPRG535_556
             app.UseStaticFiles();
 
             app.UseRouting();
-            app.UseSession(); // Ensure this is before UseAuthorization
+            app.UseSession();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

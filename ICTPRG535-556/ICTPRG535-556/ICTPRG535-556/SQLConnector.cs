@@ -8,6 +8,7 @@ using System.Collections.Generic;
 
 namespace DataMapper
 {
+    // SQL Interface DataAccess - Benjamin Moore
     public class DataAccess
     {
         private readonly string connectionString;
@@ -15,21 +16,24 @@ namespace DataMapper
 
         public DataAccess()
         {
+            // Main Connection String
             this.connectionString = "Server=localhost;Database=ShoppingList;Trusted_Connection=True;TrustServerCertificate=True;";
+            // DB Initialisation Connection String
             this.noDBOConnectionstring = "Server=localhost;Trusted_Connection=True;TrustServerCertificate=True;";
         }
         #region Initialise Database
-
+        // Initialises database before operation
         public void InitializeDatabase()
         {
 
             // Create database if it doesn't exist
             CreateDatabase();
 
+            // Create tables if they don't exist
             CreateTableLists();
             CreateTableUsers();
             CreateTableProduce();
-
+            // Populate tables if empty
             if (IsTableEmpty("Lists"))
             {
                 PopulateLists();
@@ -42,8 +46,9 @@ namespace DataMapper
             {
                 PopulateUsers();
             }
-            // Create tables if they don't exist
+
         }
+        // Checks if the table name has content in the database with validation
         private bool IsTableEmpty(string tableName)
         {
             SqlConnection connection = new SqlConnection(connectionString);
@@ -73,8 +78,7 @@ namespace DataMapper
                 }
             }
         }
-
-
+        // Creates the database if not exists
         private void CreateDatabase()
         {
             using (SqlConnection connection = new SqlConnection(noDBOConnectionstring))
@@ -90,7 +94,7 @@ namespace DataMapper
                 command.ExecuteNonQuery();
             }
         }
-
+        // Creates the Lists table if not exists
         private void CreateTableLists()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -115,7 +119,7 @@ namespace DataMapper
                 command.ExecuteNonQuery();
             }
         }
-
+        // Creates the Users table if not exists
         private void CreateTableUsers()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -135,7 +139,7 @@ namespace DataMapper
                 command.ExecuteNonQuery();
             }
         }
-
+        // Creates the Produce table if not exists
         private void CreateTableProduce()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -156,7 +160,7 @@ namespace DataMapper
                 command.ExecuteNonQuery();
             }
         }
-
+        // Populates The List Table 
         private void PopulateLists()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -170,6 +174,7 @@ namespace DataMapper
                 command.ExecuteNonQuery();
             }
         }
+        // Populates The Users Table 
         private void PopulateUsers()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -183,6 +188,7 @@ namespace DataMapper
                 command.ExecuteNonQuery();
             }
         }
+        // Populates The Produce Table 
         private void PopulateProduce()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -242,22 +248,7 @@ namespace DataMapper
 
         #endregion
         #region GET
-        public ArrayList GetUsers()
-        {
-            ArrayList users = new ArrayList();
-
-            using (IDbConnection dbConnection = new SqlConnection(connectionString))
-            {
-                dbConnection.Open();
-                var result = dbConnection.Query<UserDTO>("SELECT UserID, Email FROM Users");
-                foreach (var user in result)
-                {
-                    users.Add(user);
-                }
-            }
-
-            return users;
-        }
+        // Gets user by user id and returns them as a UserDTO
         public UserDTO GetUserById(int userId)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -266,7 +257,7 @@ namespace DataMapper
                 return dbConnection.QueryFirstOrDefault<UserDTO>("SELECT UserID, Email,Lists FROM Users WHERE UserID = @UserID", new { UserID = userId });
             }
         }
-
+        // Gets User by email and returns as UserDTO
         [HttpPost]
         public UserDTO GetUserByEmail(string email)
         {
@@ -276,6 +267,7 @@ namespace DataMapper
                 return dbConnection.QueryFirstOrDefault<UserDTO>("SELECT UserID, Email, Lists FROM Users WHERE Email = @Email", new { Email = email });
             }
         }
+        // Gets All Lists and returns as an arraylist
         public ArrayList GetLists()
         {
             ArrayList lists = new ArrayList();
@@ -292,6 +284,7 @@ namespace DataMapper
 
             return lists;
         }
+        // Gets the highest ListID for user and then returns new max value to be assigned when creating a new list
         public int GetMaxListIdForUser(int userId)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -304,16 +297,7 @@ namespace DataMapper
                 return maxListId + 1;
             }
         }
-
-
-        public ListDTO GetFirstListByID(int userID)
-        {
-            using (IDbConnection dbConnection = new SqlConnection(connectionString))
-            {
-                dbConnection.Open();
-                return dbConnection.QueryFirstOrDefault<ListDTO>("SELECT ListID, UserID, ItemID FROM Lists WHERE UserID = @UserID", new { UserID = userID });
-            }
-        }
+        // Gets all lists by userID  and returns as a list of ListDTO
         public List<ListDTO> GetListById(int userID)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -322,7 +306,7 @@ namespace DataMapper
                 return dbConnection.Query<ListDTO>("SELECT ListID, UserID, ItemID FROM Lists WHERE UserID = @UserID", new { UserID = userID }).ToList();
             }
         }
-
+        // Get Specific Produce where Item name is simular to the search term, used in search function
         public List<ProduceDTO> GetProduceByItemName(string itemName)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -332,7 +316,7 @@ namespace DataMapper
                 return dbConnection.Query<ProduceDTO>(query, new { Name = "%" + itemName + "%" }).ToList();
             }
         }
-
+        // Gets all produce 
         public List<ProduceDTO> GetProduce()
         {
             List<ProduceDTO> produce = new List<ProduceDTO>();
@@ -417,6 +401,7 @@ namespace DataMapper
 
         #endregion
         #region POST
+        // Adds User (Not implimented but useful for development)
         public void PostUser(UserDTO user)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -484,38 +469,42 @@ namespace DataMapper
 
         #endregion
         #region CART MECHANICS
+
+        // Retrieves a list of ListIDs associated with a specific user, limited to the first result.
         public IEnumerable<int> GetUserLists(int userId)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
             {
                 dbConnection.Open();
                 var query = @"SELECT DISTINCT
-                        ListID
-                      FROM Lists
-                      WHERE UserID = @UserId";
+                       ListID
+                     FROM Lists
+                     WHERE UserID = @UserId";
                 return dbConnection.Query<int>(query, new { UserId = userId }).Take(1);
             }
         }
 
+        // Retrieves all items associated with a specific list.
         public List<ListDTO> GetListItems(int listId)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
             {
                 dbConnection.Open();
-                // Retrieve list items for the specified list ID
                 return dbConnection.Query<ListDTO>("SELECT * FROM Lists WHERE ListID = @ListId", new { ListId = listId }).ToList();
             }
         }
 
+        // Adds a new list to the database for a user.
         public void AddList(ListDTO listDTO)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
             {
                 dbConnection.Open();
-                // Insert a new list for the user
                 dbConnection.Execute("INSERT INTO Lists (UserID,ListID,ItemID,ListName,Quantity,Price) VALUES (@UserId,@ListID,@ItemID,@ListName,@Quantity,@Price)", listDTO);
             }
         }
+
+        // Retrieves the name of a list by its ID.
         public string GetListNameById(int listId)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -524,20 +513,20 @@ namespace DataMapper
                 return dbConnection.QueryFirstOrDefault<string>("SELECT ListName FROM Lists WHERE ListID = @ListId", new { ListId = listId });
             }
         }
+
+        // Updates the quantity of an item in a list.
         public void UpdateItemQuantity(int listId, int itemId, int additionalQuantity)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
             {
                 dbConnection.Open();
 
-                // Retrieve current quantity, handle null values by providing a default value of 0
+                // Retrieve current quantity, handling null values with a default of 0
                 string selectQuery = "SELECT ISNULL(Quantity, 0) AS Quantity FROM Lists WHERE ListID = @ListID AND ItemID = @ItemID";
                 int currentQuantity = dbConnection.QuerySingleOrDefault<int>(selectQuery, new { ListID = listId, ItemID = itemId });
 
-                // Calculate new quantity
                 int newQuantity = currentQuantity + additionalQuantity;
 
-                // Update Quantity in the database
                 string updateQuery = "UPDATE Lists SET Quantity = @Quantity WHERE ListID = @ListID AND ItemID = @ItemID";
                 dbConnection.Execute(updateQuery, new { Quantity = newQuantity, ListID = listId, ItemID = itemId });
 
@@ -545,6 +534,7 @@ namespace DataMapper
             }
         }
 
+        // Checks if an item exists in a specified list.
         public bool DoesItemExistInCart(int listId, int itemId)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -557,6 +547,8 @@ namespace DataMapper
                 return count > 0;
             }
         }
+
+        // Retrieves the number of items in a specified list.
         public int GetItemCountInList(int listId)
         {
             int itemCount = 0;
@@ -575,6 +567,8 @@ namespace DataMapper
 
             return itemCount;
         }
+
+        // Retrieves all lists associated with a specific user.
         public IEnumerable<ListDTO> GetAllUserLists(int userId)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -584,25 +578,27 @@ namespace DataMapper
             }
         }
 
-
+        // Retrieves products associated with a specified item ID.
         public IEnumerable<ProduceDTO> GetUserListProducts(int itemID)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
             {
                 dbConnection.Open();
-                // Retrieve products for the specified list ID
                 return dbConnection.Query<ProduceDTO>("SELECT * FROM Produce WHERE ItemID = @ItemID", new { ItemID = itemID });
             }
         }
+
+        // Retrieves the email address of a user by their ID.
         public string GetUserEmail(int userId)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
             {
                 dbConnection.Open();
-                // Retrieve the user email for the specified user ID
                 return dbConnection.QuerySingleOrDefault<string>("SELECT Email FROM Users WHERE UserID = @UserId", new { UserId = userId });
             }
         }
+
+        // Retrieves the quantity of a specific item in a list.
         public int GetItemQuantityInList(int listId, int itemId)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -614,6 +610,8 @@ namespace DataMapper
                 return dbConnection.QuerySingleOrDefault<int>(query, new { ListID = listId, ItemID = itemId });
             }
         }
+
+        // Retrieves the highest index value in a list.
         public int GetMaxListIndex(int listId)
         {
             int maxListIndex = 0;
@@ -627,6 +625,8 @@ namespace DataMapper
 
             return maxListIndex;
         }
+
+        // Retrieves the name of a product by its ID.
         public string GetProductName(int productId)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -636,6 +636,7 @@ namespace DataMapper
             }
         }
 
+        // Retrieves the price of a product by its ID.
         public decimal GetProductPrice(int productId)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -645,6 +646,7 @@ namespace DataMapper
             }
         }
 
+        // Retrieves the weight or unit of measurement of a product by its ID.
         public string GetProductWeight(int productId)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -653,37 +655,37 @@ namespace DataMapper
                 return dbConnection.ExecuteScalar<string>("SELECT Unit FROM Produce WHERE ItemID = @ProductId", new { ProductId = productId });
             }
         }
+
+        // Updates the total price of a specific item in the cart based on quantity.
         public void UpdateCartPrice(int listId, int itemId, int quantity)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
             {
                 dbConnection.Open();
 
-                // Retrieve the product price using the existing method
                 var product = GetUserListProducts(itemId).FirstOrDefault();
 
                 if (product != null)
                 {
-                    // Calculate the new price
                     decimal newPriceint = product.Price * quantity;
                     string newPrice = Convert.ToString(newPriceint);
-                    // Update the price in the cart
+
                     string updateQuery = "UPDATE Lists SET Price = @NewPrice WHERE ListID = @ListID AND ItemID = @ItemID";
                     dbConnection.Execute(updateQuery, new { NewPrice = newPrice, ListID = listId, ItemID = itemId });
                 }
             }
         }
+
+        // Retrieves the price of a product based on the item ID.
         public decimal GetProductPriceByItemId(int itemId)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
             {
                 dbConnection.Open();
 
-                // Retrieve the price of the product for the specified ItemID
                 string query = "SELECT Price FROM Lists WHERE ItemID = @ItemID";
                 var price = dbConnection.QueryFirstOrDefault<decimal?>(query, new { ItemID = itemId });
 
-                // Log the price for debugging
                 if (price == null)
                 {
                     Console.WriteLine($"Price for ItemID {itemId} not found.");
@@ -693,13 +695,11 @@ namespace DataMapper
                     Console.WriteLine($"Price for ItemID {itemId}: {price.Value}");
                 }
 
-                return price ?? 0; // Return 0 if price is null
+                return price ?? 0;
             }
         }
 
-
-
-
+        // Updates the name of a list.
         public void UpdateListName(int listId, string newListName)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -710,8 +710,7 @@ namespace DataMapper
             }
         }
 
-
-
         #endregion
+
     }
 }

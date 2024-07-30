@@ -10,7 +10,7 @@ public class AuthController : BaseController
     {
         _dataAccess = new DataAccess();
     }
-
+    // Login Index method
     [HttpGet]
     [Route("Login")]
     public IActionResult Login()
@@ -18,12 +18,13 @@ public class AuthController : BaseController
         if (LoggedInUserId.HasValue)
         {
             var user = _dataAccess.GetUserById(LoggedInUserId.Value);
-            ViewBag.Email = user.Email; // Assuming you have a method to get user by ID
+            ViewBag.Email = user.Email;
             return View("LoggedIn");
         }
         return View();
     }
 
+    // Login Validation Action
     [HttpPost]
     [Route("Login")]
     public IActionResult ProcessLogin(string email)
@@ -51,6 +52,8 @@ public class AuthController : BaseController
         // Redirect to the user's cart page with the userID
         return RedirectToAction("UserCart", "Cart", new { id = user.UserID });
     }
+
+    // Gets Logged in user id
     public int GetUserId()
     {
         if (HttpContext == null)
@@ -66,7 +69,7 @@ public class AuthController : BaseController
         }
         return Convert.ToInt32(userId);
     }
-
+    // Logs out user
     public IActionResult Logout()
     {
         // Clear the session data

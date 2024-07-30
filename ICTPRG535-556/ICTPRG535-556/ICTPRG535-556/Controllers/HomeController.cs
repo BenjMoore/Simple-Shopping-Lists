@@ -16,7 +16,7 @@ namespace ICTPRG535_556.Controllers
             _logger = logger;
             _dataAccess = new DataAccess();
         }
-
+        // Load Products and set session variables
         public IActionResult Index()
         {
             int listId = HttpContext.Session.GetInt32("ListId") ?? 0;
@@ -27,12 +27,11 @@ namespace ICTPRG535_556.Controllers
             // Pass user email and list name to the view
 
             ViewData["ListName"] = listName;
-            // Assuming you have logic to retrieve user email and selected cart name
-            var userEmail = _dataAccess.GetUserEmail(userId); // Example user email
-            var selectedCartName = _dataAccess.GetListNameById(listId); // Example selected cart name
+
+            var userEmail = _dataAccess.GetUserEmail(userId);
+            var selectedCartName = _dataAccess.GetListNameById(listId);
             ViewData["UserEmail"] = userEmail;
-            // Assuming you have logic to retrieve produce items
-            var produceItems = _dataAccess.GetProduce(); // Example method to retrieve produce items
+            var produceItems = _dataAccess.GetProduce();
 
             // Populate the model
             var model = new SessionCartDTO
@@ -47,7 +46,7 @@ namespace ICTPRG535_556.Controllers
 
             return View(model);
         }
-
+        // Action to get the list name selected
         public IActionResult GetListName(int listId)
         {
             try
@@ -84,7 +83,7 @@ namespace ICTPRG535_556.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
-
+        // Adds Items to cart
         [HttpPost]
         public IActionResult AddToCart(int itemId)
         {
@@ -93,7 +92,7 @@ namespace ICTPRG535_556.Controllers
             var userId = HttpContext.Session.GetInt32("UserId");
 
             // Check if the selected list ID or user ID is null or invalid
-            if (!listId.HasValue || listId.Value <= -1|| !userId.HasValue || userId.Value <= 0)
+            if (!listId.HasValue || listId.Value <= -1 || !userId.HasValue || userId.Value <= 0)
             {
                 // Handle the case where no list is selected or user is not logged in
                 return RedirectToAction("Index", "Home"); // Redirect to a suitable page
@@ -140,7 +139,7 @@ namespace ICTPRG535_556.Controllers
         {
             if (string.IsNullOrWhiteSpace(search))
             {
-
+                return View();
             }
 
             List<ProduceDTO> searchResults = _dataAccess.GetProduceByItemName(search);

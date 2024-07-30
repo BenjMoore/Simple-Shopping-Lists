@@ -17,6 +17,7 @@ public class CartController : BaseController
 
     public int selectedList = 0;
 
+    // Calculates the total for a list
     private decimal CalculateTotalPrice(List<ListDTO> items)
     {
         decimal totalPrice = 0;
@@ -28,7 +29,7 @@ public class CartController : BaseController
     }
 
 
-
+    // User Cart Section for selected cart
     [Route("/Cart")]
     public IActionResult UserCart(int id)
     {
@@ -83,6 +84,8 @@ public class CartController : BaseController
             return RedirectToAction("Login", "Auth");
         }
     }
+
+    // Creates a new list for user
     public IActionResult CreateNewList(int listID)
     {
         var loggedInUserId = HttpContext.Session.GetInt32("UserId") ?? 0;
@@ -98,6 +101,8 @@ public class CartController : BaseController
         HttpContext.Session.SetInt32("ListId", newListID);
         return RedirectToAction("SelectList", "Cart");
     }
+
+    // Select cart page to display user carts
     public IActionResult Select()
     {
         // Check if the logged-in user ID is available in the session
@@ -199,7 +204,7 @@ public class CartController : BaseController
 
 
 
-
+    // Updates List Name based on listid and listname
     [HttpPost]
     public IActionResult UpdateListName(int listId, string newListName)
     {
@@ -213,7 +218,7 @@ public class CartController : BaseController
             return StatusCode(500, ex.Message);
         }
     }
-
+    // Updates quantity for duplicate products in the list
     [HttpPost]
     public IActionResult UpdateQuantity(int itemId, int listId, int quantityChange)
     {
@@ -253,7 +258,7 @@ public class CartController : BaseController
 
 
 
-
+    // Logout Method
     [HttpPost]
     [Route("logout")]
     public IActionResult Logout()
@@ -261,14 +266,14 @@ public class CartController : BaseController
         HttpContext.Session.Clear();
         return RedirectToAction("Index", "Home");
     }
+    // Delete List
     [HttpPost]
     public IActionResult DeleteList(int listId)
     {
-        // Add logic to delete the list with the specified ID
         _dataAccess.DeleteList(listId);
         return RedirectToAction(nameof(SelectList), new { listId }); // Redirect to the same action with the listId
     }
-
+    // Delete Produce
     [HttpPost]
     public IActionResult DeleteProduce(int itemId, int userId)
     {

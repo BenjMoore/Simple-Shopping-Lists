@@ -15,7 +15,7 @@ namespace ICTPRG535_556.Controllers
                 // Set the username as a session cookie
                 HttpContext.Session.SetString("Username", username);
 
-                // Optionally, you can add a TempData message to confirm the update
+
                 TempData["Message"] = "Username has been set.";
                 return Json(new { success = true });
             }
