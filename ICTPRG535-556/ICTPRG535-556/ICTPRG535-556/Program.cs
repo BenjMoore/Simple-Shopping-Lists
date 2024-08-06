@@ -14,6 +14,7 @@ namespace ICTPRG535_556
         public static void Main(string[] args)
         {
             DataAccess con = new DataAccess();
+            con.InitializeDatabase();          
             Console.Out.WriteLine(con.GetLists());
             CreateHostBuilder(args).Build().Run();
         }
@@ -29,15 +30,13 @@ namespace ICTPRG535_556
         {
             services.AddSession(opts =>
             {
-                opts.IdleTimeout = TimeSpan.FromMinutes(30); // Increased session timeout to 30 minutes
+                opts.IdleTimeout = TimeSpan.FromMinutes(30);
                 opts.Cookie.HttpOnly = true;
                 opts.Cookie.IsEssential = true;
             });
 
             services.AddControllersWithViews();
 
-            // Register other services here, e.g. DataAccess, DbContext, etc.
-            // services.AddTransient<DataAccess>(); // If DataAccess is required via DI
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -56,7 +55,7 @@ namespace ICTPRG535_556
             app.UseStaticFiles();
 
             app.UseRouting();
-            app.UseSession(); // Ensure this is before UseAuthorization
+            app.UseSession();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

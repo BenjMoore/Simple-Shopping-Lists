@@ -17,6 +17,7 @@ public class CartController : BaseController
 
     public int selectedList = 0;
 
+    // Calculates total list price
     private decimal CalculateTotalPrice(List<ListDTO> items)
     {
         decimal totalPrice = 0;
@@ -83,6 +84,7 @@ public class CartController : BaseController
             return RedirectToAction("Login", "Auth");
         }
     }
+    // Creates a new list
     public IActionResult CreateNewList(int listID)
     {
         var loggedInUserId = HttpContext.Session.GetInt32("UserId") ?? 0;
@@ -144,7 +146,7 @@ public class CartController : BaseController
             if (list == null)
             {
                 // Handle the case where the list is not found
-                return RedirectToAction("UserCart", "Cart"); // Redirect to a suitable page
+                return RedirectToAction("UserCart", "Cart");
             }
 
             List<ListDTO> listItems = _dataAccess.GetListItems(listId);
@@ -199,17 +201,19 @@ public class CartController : BaseController
 
 
 
-
     [HttpPost]
     public IActionResult UpdateListName(int listId, string newListName)
     {
         try
         {
+            // Call DataAccess layer method to update list name
             _dataAccess.UpdateListName(listId, newListName);
+            // Return success response as JSON
             return Json(new { success = true });
         }
         catch (Exception ex)
         {
+            // Return 500 status with the exception message if an error occurs
             return StatusCode(500, ex.Message);
         }
     }
@@ -217,39 +221,50 @@ public class CartController : BaseController
     [HttpPost]
     public IActionResult UpdateQuantity(int itemId, int listId, int quantityChange)
     {
+        // Retrieve userId from session
         int userId = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
         try
         {
+            // Retrieve current state of the shopping list
             List<ListDTO> currentListState = _dataAccess.GetListItems(listId);
+            // Retrieve current quantity of the item in the list
             int currentQuantity = _dataAccess.GetItemQuantityInList(listId, itemId);
+            // Calculate new quantity after change
             int newQuantity = currentQuantity + quantityChange;
 
+            // If new quantity is zero, delete the item from the list
             if (newQuantity == 0)
             {
                 _dataAccess.DeleteProduce(listId, itemId, userId);
+                // Return success response with updated quantities and total price
                 return Json(new { success = true, newQuantity = 0, newPrice = 0, totalPrice = CalculateTotalPrice(currentListState) });
             }
             else
             {
+                // Update the quantity of the item in the list
                 _dataAccess.UpdateItemQuantity(listId, itemId, quantityChange);
-
+                // Update calculated price for the item in the cart
                 _dataAccess.UpdateCartPrice(listId, itemId, newQuantity);
 
+                // Calculate new price for the item based on new quantity
                 decimal newPrice = _dataAccess.GetProductPriceByItemId(itemId) * newQuantity;
 
+                // Retrieve updated state of the shopping list
                 List<ListDTO> newListState = _dataAccess.GetListItems(listId);
 
+                // Calculate total price of the shopping list
                 decimal totalPrice = CalculateTotalPrice(newListState);
 
+                // Return success response with updated quantities, prices, and total price
                 return Json(new { success = true, newQuantity = newQuantity, newPrice = newPrice.ToString("F2"), totalPrice = totalPrice.ToString("F2") });
             }
         }
         catch (Exception ex)
         {
+            // Return 500 status 
             return StatusCode(500, ex.Message);
         }
     }
-
 
 
 
@@ -279,12 +294,12 @@ public class CartController : BaseController
             // Call the DeleteProduce method in your data access layer
             _dataAccess.DeleteProduce(itemId, userId, listId);
 
-            // Return a success response for AJAX
+            // Return a success response 
             return Ok();
         }
         catch (Exception ex)
         {
-            // Return an error response for AJAX
+            // Return an error response 
             return StatusCode(500, ex.Message);
         }
     }

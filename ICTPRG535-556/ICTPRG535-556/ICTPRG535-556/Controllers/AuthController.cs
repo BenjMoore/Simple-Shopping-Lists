@@ -18,7 +18,7 @@ public class AuthController : BaseController
         if (LoggedInUserId.HasValue)
         {
             var user = _dataAccess.GetUserById(LoggedInUserId.Value);
-            ViewBag.Email = user.Email; // Assuming you have a method to get user by ID
+            ViewBag.Email = user.Email; 
             return View("LoggedIn");
         }
         return View();

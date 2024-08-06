@@ -7,6 +7,7 @@ namespace ICTPRG535_556.Controllers
     {
         [HttpPut]
         [Route("Settings/SetUsername")]
+        //This doesnt work but i dont think i need it..?
         public IActionResult SetUsername([FromBody] dynamic data)
         {
             string username = data?.username;
@@ -15,7 +16,7 @@ namespace ICTPRG535_556.Controllers
                 // Set the username as a session cookie
                 HttpContext.Session.SetString("Username", username);
 
-                // Optionally, you can add a TempData message to confirm the update
+
                 TempData["Message"] = "Username has been set.";
                 return Json(new { success = true });
             }

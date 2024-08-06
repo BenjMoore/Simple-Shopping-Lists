@@ -5,6 +5,7 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using NuGet.Protocol.Plugins;
 
 namespace DataMapper
 {
@@ -14,8 +15,164 @@ namespace DataMapper
 
         public DataAccess()
         {
-            this.connectionString = "Server=localhost;Database=ShoppingList;Trusted_Connection=True;TrustServerCertificate=True;";
+            this.connectionString = "Server=localhost;DataSource='ShoppingList';Trusted_Connection=True;TrustServerCertificate=True;";
+           
         }
+
+        #region Initialise Database
+
+        public void InitializeDatabase()
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            SetupDatabaseAndTables();
+
+                          
+        }
+
+        private void SetupDatabaseAndTables()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                try
+                {
+                    // Check if the database exists, and create it if it does not.
+                    string createDatabaseQuery = @"
+            IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = N'ShoppingList')
+            BEGIN
+                CREATE DATABASE ShoppingList;
+            END;";
+                    SqlCommand createDatabaseCommand = new SqlCommand(createDatabaseQuery, connection);
+                    createDatabaseCommand.ExecuteNonQuery();
+
+                    // Switch to the ShoppingList database.
+                    string useDatabaseQuery = "USE ShoppingList;";
+                    SqlCommand useDatabaseCommand = new SqlCommand(useDatabaseQuery, connection);
+                    useDatabaseCommand.ExecuteNonQuery();
+
+                    // Create the Lists table if it does not exist.
+                    string createTableListsQuery = @"
+            IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = N'Lists')
+            BEGIN
+                CREATE TABLE Lists (
+                    ListID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+                    UserID INT NOT NULL,
+                    ItemID INT NOT NULL,
+                    ListName NCHAR(50) NOT NULL,
+                    ListIndex INT NOT NULL,
+                    Quantity INT NOT NULL,
+                    Price FLOAT NOT NULL,
+                    Date DATETIME NOT NULL
+                );
+            END;";
+                    SqlCommand createTableListsCommand = new SqlCommand(createTableListsQuery, connection);
+                    createTableListsCommand.ExecuteNonQuery();
+
+                    // Create the Users table if it does not exist.
+                    string createTableUsersQuery = @"
+            IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = N'Users')
+            BEGIN
+                CREATE TABLE Users (
+                    UserID INT NOT NULL PRIMARY KEY,
+                    Email NCHAR(50) NOT NULL,
+                    Lists INT NOT NULL
+                );
+            END;";
+                    SqlCommand createTableUsersCommand = new SqlCommand(createTableUsersQuery, connection);
+                    createTableUsersCommand.ExecuteNonQuery();
+
+                    // Create the Produce table if it does not exist.
+                    string createTableProduceQuery = @"
+            IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = N'Produce')
+            BEGIN
+                CREATE TABLE Produce (
+                    ItemID INT NOT NULL PRIMARY KEY,
+                    Name NCHAR(60) NOT NULL,
+                    Unit NCHAR(30) NOT NULL,
+                    Price VARCHAR(30) NOT NULL
+                );
+            END;";
+                    SqlCommand createTableProduceCommand = new SqlCommand(createTableProduceQuery, connection);
+                    createTableProduceCommand.ExecuteNonQuery();
+
+                    // Populate the tables if they are empty.
+                    string checkAndPopulateTablesQuery = @"
+            USE ShoppingList;
+
+            IF NOT EXISTS (SELECT * FROM Lists)
+            BEGIN
+                INSERT INTO Lists (UserID, ItemID, ListName, ListIndex, Quantity, Price, Date) VALUES 
+                (1, 1, 'Example List', 1, 2, 11.00, GETDATE());
+            END;
+
+            IF NOT EXISTS (SELECT * FROM Users)
+            BEGIN
+                INSERT INTO Users (Email, Lists) VALUES 
+                ('Example@test.com', 0);
+            END;
+
+            IF NOT EXISTS (SELECT * FROM Produce)
+            BEGIN
+                INSERT INTO Produce (ItemID, Name, Unit, Price) VALUES 
+                (1, 'Granny Smith Apples', '1kg', '$5.50'), 
+                (2, 'Fresh tomatoes', '500g', '$5.90'), 
+                (3, 'Watermelon', 'Whole', '$6.60'), 
+                (4, 'Cucumber', '1 whole', '$1.90'), 
+                (5, 'Red potato washed', '1kg', '$4.00'), 
+                (6, 'Red tipped bananas', '1kg', '$4.90'), 
+                (7, 'Red onion', '1kg', '$3.50'), 
+                (8, 'Carrots', '1kg', '$2.00'), 
+                (9, 'Iceburg Lettuce', '1', '$2.50'), 
+                (10, 'Helga''s Wholemeal', '1', '$3.70'), 
+                (11, 'Free range chicken', '1kg', '$7.50'), 
+                (12, 'Manning Valley 6-pk', '6 eggs', '$3.60'), 
+                (13, 'A2 light milk', '1 litre', '$2.90'), 
+                (14, 'Chobani Strawberry Yoghurt', '1', '$1.50'), 
+                (15, 'Lurpak Salted Blend', '250g', '$5.00'), 
+                (16, 'Bega Farmers Tasty', '250g', '$4.00'), 
+                (17, 'Babybel Mini', '100g', '$4.20'), 
+                (18, 'Cobram EVOO', '375ml', '$8.00'), 
+                (19, 'Heinz Tomato Soup', '535g', '$2.50'), 
+                (20, 'John West Tuna can', '95g', '$1.50'), 
+                (21, 'Cadbury Dairy Milk', '200g', '$5.00'), 
+                (22, 'Coca Cola', '2 litre', '$2.85'), 
+                (23, 'Smith''s Original Share Pack Crisps', '170g', '$3.29'), 
+                (24, 'Birds Eye Fish Fingers', '375g', '$4.50'), 
+                (25, 'Berri Orange Juice', '2 litre', '$6.00'), 
+                (26, 'Vegemite', '380g', '$6.00'), 
+                (27, 'Cheddar Shapes', '175g', '$2.00'), 
+                (28, 'Colgate Total Toothpaste Original', '110g', '$3.50'), 
+                (29, 'Milo Chocolate Malt', '200g', '$4.00'), 
+                (30, 'Weet Bix Saniatarium Organic', '750g', '$5.33'), 
+                (31, 'Lindt Excellence 70% Cocoa Block', '100g', '$4.25'), 
+                (32, 'Original Tim Tams Choclate', '200g', '$3.65'), 
+                (33, 'Philadelphia Original Cream Cheese', '250g', '$4.30'), 
+                (34, 'Moccana Classic Instant Medium Roast', '100g', '$6.00'), 
+                (35, 'Capilano Squeezable Honey', '500g', '$7.35'), 
+                (36, 'Nutella jar', '400g', '$4.00'), 
+                (37, 'Arnott''s Scotch Finger', '250g', '$2.85'), 
+                (38, 'South Cape Greek Feta', '200g', '$5.00'), 
+                (39, 'Sacla Pasta Tomato Basil Sauce', '420g', '$4.50'), 
+                (40, 'Primo English Ham', '100g', '$3.00'), 
+                (41, 'Primo Short cut rindless Bacon', '175g', '$5.00'), 
+                (42, 'Golden Circle Pineapple Pieces in natural juice', '440g', '$3.25'), 
+                (43, 'San Remo Linguine Pasta No 1', '500g', '$1.95');
+            END;";
+
+                    SqlCommand checkAndPopulateTablesCommand = new SqlCommand(checkAndPopulateTablesQuery, connection);
+                    checkAndPopulateTablesCommand.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    // Log the exception (you can replace this with your actual logging mechanism)
+                    Console.WriteLine("An error occurred: " + ex.Message);
+                }
+            }
+        }
+
+
+        #endregion
         #region GET
         public ArrayList GetUsers()
         {
@@ -125,7 +282,7 @@ namespace DataMapper
             return produce;
         }
         #endregion
-        #region SET
+    #region SET
 
         // Set method for UserDTO
         public void SetUser(UserDTO user)
@@ -157,7 +314,7 @@ namespace DataMapper
             }
         }
         #endregion
-        #region PUT
+    #region PUT
 
         // Put method for UserDTO
         public void PutUser(UserDTO user)
@@ -191,7 +348,7 @@ namespace DataMapper
 
 
         #endregion
-        #region POST
+    #region POST
         public void PostUser(UserDTO user)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -221,7 +378,7 @@ namespace DataMapper
             }
         }
         #endregion
-        #region DELETE
+    #region DELETE
         // Delete method for UserDTO
         public void DeleteUser(int userId)
         {
@@ -258,7 +415,7 @@ namespace DataMapper
 
 
         #endregion
-        #region CART MECHANICS
+    #region CART MECHANICS
         public IEnumerable<int> GetUserLists(int userId)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -334,24 +491,7 @@ namespace DataMapper
                 return count > 0;
             }
         }
-        public int GetItemCountInList(int listId)
-        {
-            int itemCount = 0;
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string query = "SELECT COUNT(*) FROM Lists WHERE ListID = @ListID";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@ListID", listId);
-                    connection.Open();
-                    itemCount = (int)command.ExecuteScalar();
-                }
-            }
-
-            return itemCount;
-        }
         public IEnumerable<ListDTO> GetAllUserLists(int userId)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -459,16 +599,6 @@ namespace DataMapper
                 // Retrieve the price of the product for the specified ItemID
                 string query = "SELECT Price FROM Lists WHERE ItemID = @ItemID";
                 var price = dbConnection.QueryFirstOrDefault<decimal?>(query, new { ItemID = itemId });
-
-                // Log the price for debugging
-                if (price == null)
-                {
-                    Console.WriteLine($"Price for ItemID {itemId} not found.");
-                }
-                else
-                {
-                    Console.WriteLine($"Price for ItemID {itemId}: {price.Value}");
-                }
 
                 return price ?? 0; // Return 0 if price is null
             }

@@ -27,12 +27,12 @@ namespace ICTPRG535_556.Controllers
             // Pass user email and list name to the view
 
             ViewData["ListName"] = listName;
-            // Assuming you have logic to retrieve user email and selected cart name
-            var userEmail = _dataAccess.GetUserEmail(userId); // Example user email
-            var selectedCartName = _dataAccess.GetListNameById(listId); // Example selected cart name
+            //logic to retrieve user email and selected cart name
+            var userEmail = _dataAccess.GetUserEmail(userId); // user email
+            var selectedCartName = _dataAccess.GetListNameById(listId); // selected cart name
             ViewData["UserEmail"] = userEmail;
-            // Assuming you have logic to retrieve produce items
-            var produceItems = _dataAccess.GetProduce(); // Example method to retrieve produce items
+            // logic to retrieve produce items
+            var produceItems = _dataAccess.GetProduce();
 
             // Populate the model
             var model = new SessionCartDTO
@@ -140,7 +140,7 @@ namespace ICTPRG535_556.Controllers
         {
             if (string.IsNullOrWhiteSpace(search))
             {
-
+                return View("index");
             }
 
             List<ProduceDTO> searchResults = _dataAccess.GetProduceByItemName(search);
@@ -154,8 +154,9 @@ namespace ICTPRG535_556.Controllers
             var user = _dataAccess.GetUserById(userID);
             if (user == null)
             {
-                // Handle case where user is not found
                 // Redirect to an error page or display an error message
+                return View();
+
             }
 
             return View(user); // Pass user data to the profile view

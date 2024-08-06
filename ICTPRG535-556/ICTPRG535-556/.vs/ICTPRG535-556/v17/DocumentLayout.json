@@ -1,161 +1,20 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\",
+  "WorkspaceRootPath": "E:\\ICTPRG553-554\\ICTPRG535-556\\ICTPRG535-556\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\sqlconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Benjamin Moore\\AppData\\Local\\SourceServer\\4c2f3fac53b5c81c9ac1f6cfebd383811e40ef708a81d58a2f83de3afd24cba6\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\SQLConnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|e:\\ictprg553-554\\ictprg535-556\\ictprg535-556\\ictprg535-556\\sqlconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\sqlconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\ictprg535-556.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Benjamin Moore\\AppData\\Local\\SourceServer\\a6c925f62e220d3679dd8caa3ed034b253ea864096f47b909fafaab4ad38fe1d\\Dapper\\SqlMapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\cart\\selectlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\views\\cart\\selectlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\cart\\select.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\views\\cart\\select.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\models\\databasemodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\models\\databasemodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|e:\\ictprg553-554\\ictprg535-556\\ictprg535-556\\ictprg535-556\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\models\\cartmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\models\\cartmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\controllers\\aboutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\controllers\\aboutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\cart\\newlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\views\\cart\\newlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\controllers\\settingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\controllers\\settingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\settings\\settings.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\views\\settings\\settings.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\auth\\loggedin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\views\\auth\\loggedin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\wwwroot\\css\\home.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\wwwroot\\css\\home.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\about\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\views\\about\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Benjm\\AppData\\Local\\Temp\\.vsdbgsrc\\1cc6d2a634203e0de348b5980fee97b87977d5074b436e24ff974f8438968be4\\ActionMethodExecutor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\shared\\_producetable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\views\\shared\\_producetable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\VisualStudio\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\wwwroot\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\wwwroot\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Benjm\\AppData\\Local\\Temp\\.vsdbgsrc\\89212dcd2f3257a3e3eec5938d09a0833888ece5c501afa26d6bce46396c248c\\ControllerActionInvoker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\cart\\usercart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\views\\cart\\usercart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Benjm\\AppData\\Local\\Temp\\.vsdbgsrc\\1ca169b5f8096b3fd01bc738c77225099d363dea7bb508bd774b256157500bca\\Monitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Benjm\\AppData\\Local\\Temp\\.vsdbgsrc\\de3c475d5d8ddfef73a8b47138c6692ac88195c0c2d9ee08c7dab15e957ac8b7\\ResourceInvoker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\ictprg535-556.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\wwwroot\\css\\home.css||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\wwwroot\\css\\home.css||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|c:\\users\\benjamin moore\\github\\ictprg4302\\ictprg535-556\\ictprg535-556\\ictprg535-556\\ictprg535-556\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -165,522 +24,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ICTPRG535-556",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556.csproj",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\ICTPRG535-556.csproj",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556.csproj",
-              "RelativeToolTip": "ICTPRG535-556\\ICTPRG535-556.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-07-22T12:32:24.748Z",
-              "EditorCaption": ""
+              "DocumentIndex": 0,
+              "Title": "SQLConnector.cs",
+              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\AppData\\Local\\SourceServer\\4c2f3fac53b5c81c9ac1f6cfebd383811e40ef708a81d58a2f83de3afd24cba6\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\SQLConnector.cs",
+              "ToolTip": "C:\\Users\\Benjamin Moore\\AppData\\Local\\SourceServer\\4c2f3fac53b5c81c9ac1f6cfebd383811e40ef708a81d58a2f83de3afd24cba6\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\SQLConnector.cs [Read Only]",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-25T11:06:56.329Z",
+              "EditorCaption": " [Read Only]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "CartController.cs",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\CartController.cs",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Controllers\\CartController.cs",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\CartController.cs",
-              "RelativeToolTip": "ICTPRG535-556\\Controllers\\CartController.cs",
-              "ViewState": "AQIAAEwAAAAANzMzM/MkwFkAAAA3AAAA",
+              "Title": "SqlMapper.cs",
+              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\AppData\\Local\\SourceServer\\a6c925f62e220d3679dd8caa3ed034b253ea864096f47b909fafaab4ad38fe1d\\Dapper\\SqlMapper.cs",
+              "ToolTip": "C:\\Users\\Benjamin Moore\\AppData\\Local\\SourceServer\\a6c925f62e220d3679dd8caa3ed034b253ea864096f47b909fafaab4ad38fe1d\\Dapper\\SqlMapper.cs",
+              "ViewState": "AQIAAGUEAAAAAAAAAAAowIMEAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-09T06:38:39.196Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SQLConnector.cs",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\SQLConnector.cs",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\SQLConnector.cs",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\SQLConnector.cs",
-              "RelativeToolTip": "ICTPRG535-556\\SQLConnector.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAuwEgAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T08:06:49.872Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Select.cshtml",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Cart\\Select.cshtml",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\Cart\\Select.cshtml",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Cart\\Select.cshtml",
-              "RelativeToolTip": "ICTPRG535-556\\Views\\Cart\\Select.cshtml",
-              "ViewState": "AQIAAEIAAAAAbWZmZmYNwEsAAABRAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-07T09:09:13.937Z",
+              "WhenOpened": "2024-07-25T07:14:55.085Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "SelectList.cshtml",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Cart\\SelectList.cshtml",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\Cart\\SelectList.cshtml",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Cart\\SelectList.cshtml",
-              "RelativeToolTip": "ICTPRG535-556\\Views\\Cart\\SelectList.cshtml",
-              "ViewState": "AQIAAE8AAAAAAQAAAADyv1wAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-08T10:15:45.945Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "BaseController.cs",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\BaseController.cs",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Controllers\\BaseController.cs",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\BaseController.cs",
-              "RelativeToolTip": "ICTPRG535-556\\Controllers\\BaseController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-07T06:20:46.271Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "AboutController.cs",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\AboutController.cs",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Controllers\\AboutController.cs",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\AboutController.cs",
-              "RelativeToolTip": "ICTPRG535-556\\Controllers\\AboutController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T12:16:11.05Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DatabaseModels.cs",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Models\\DatabaseModels.cs",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Models\\DatabaseModels.cs",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Models\\DatabaseModels.cs",
-              "RelativeToolTip": "ICTPRG535-556\\Models\\DatabaseModels.cs",
-              "ViewState": "AQIAAAUAAADAAAAAAIAqwBEAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T06:22:18.176Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Program.cs",
+              "DocumentMoniker": "E:\\ICTPRG553-554\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Program.cs",
               "RelativeDocumentMoniker": "ICTPRG535-556\\Program.cs",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Program.cs",
+              "ToolTip": "E:\\ICTPRG553-554\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Program.cs",
               "RelativeToolTip": "ICTPRG535-556\\Program.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAADwv0EAAABHAAAA",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAkwBEAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T05:34:20.316Z",
+              "WhenOpened": "2024-07-25T06:32:01.878Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "ICTPRG535-556\\Controllers\\AuthController.cs",
-              "ViewState": "AQIAABYAAABAaWZmZiYnwBUAAAAkAAAA",
+              "DocumentIndex": 1,
+              "Title": "SQLConnector.cs",
+              "DocumentMoniker": "E:\\ICTPRG553-554\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\SQLConnector.cs",
+              "RelativeDocumentMoniker": "ICTPRG535-556\\SQLConnector.cs",
+              "ToolTip": "E:\\ICTPRG553-554\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\SQLConnector.cs",
+              "RelativeToolTip": "ICTPRG535-556\\SQLConnector.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAqwBQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T05:32:36.333Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "NewList.cshtml",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Cart\\NewList.cshtml",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\Cart\\NewList.cshtml",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Cart\\NewList.cshtml",
-              "RelativeToolTip": "ICTPRG535-556\\Views\\Cart\\NewList.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFQAAABHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-10T05:49:35.907Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "CartModel.cs",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Models\\CartModel.cs",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Models\\CartModel.cs",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Models\\CartModel.cs",
-              "RelativeToolTip": "ICTPRG535-556\\Models\\CartModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T12:56:05.547Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "LoggedIn.cshtml",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Auth\\LoggedIn.cshtml",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\Auth\\LoggedIn.cshtml",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Auth\\LoggedIn.cshtml",
-              "RelativeToolTip": "ICTPRG535-556\\Views\\Auth\\LoggedIn.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-07T06:38:32.18Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "About.cshtml",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\About\\About.cshtml",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\About\\About.cshtml",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\About\\About.cshtml",
-              "RelativeToolTip": "ICTPRG535-556\\Views\\About\\About.cshtml",
-              "ViewState": "AQIAADYAAAAAAAAAAIBJwFkAAAAHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-24T12:16:42.794Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Settings.cshtml",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Settings\\Settings.cshtml",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\Settings\\Settings.cshtml",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Settings\\Settings.cshtml",
-              "RelativeToolTip": "ICTPRG535-556\\Views\\Settings\\Settings.cshtml",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAUwBQAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-24T12:06:21.548Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "ICTPRG535-556\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAEEAAAAAAAAAAAAuwFkAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T04:56:12.357Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "site.js",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\wwwroot\\js\\site.js",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\wwwroot\\js\\site.js",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\wwwroot\\js\\site.js",
-              "RelativeToolTip": "ICTPRG535-556\\wwwroot\\js\\site.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-04-24T05:28:06.611Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "SettingsController.cs",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\SettingsController.cs",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Controllers\\SettingsController.cs",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\SettingsController.cs",
-              "RelativeToolTip": "ICTPRG535-556\\Controllers\\SettingsController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T12:08:04.604Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "ICTPRG535-556\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-24T05:29:56.798Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "home.css",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\wwwroot\\css\\home.css",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\wwwroot\\css\\home.css",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\wwwroot\\css\\home.css",
-              "RelativeToolTip": "ICTPRG535-556\\wwwroot\\css\\home.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-04-24T11:59:43.583Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "Privacy.cshtml",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Home\\Privacy.cshtml",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\Home\\Privacy.cshtml",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Home\\Privacy.cshtml",
-              "RelativeToolTip": "ICTPRG535-556\\Views\\Home\\Privacy.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-24T05:24:41.141Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Auth\\Login.cshtml",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\Auth\\Login.cshtml",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Auth\\Login.cshtml",
-              "RelativeToolTip": "ICTPRG535-556\\Views\\Auth\\Login.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-24T05:14:47.899Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "site.css",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "ICTPRG535-556\\wwwroot\\css\\site.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-04-24T05:23:54.517Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "ICTPRG535-556\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAABMAAAAAAAAAAAAUwD8AAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-24T05:15:07.089Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "ErrorViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Models\\ErrorViewModel.cs",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Models\\ErrorViewModel.cs",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Models\\ErrorViewModel.cs",
-              "RelativeToolTip": "ICTPRG535-556\\Models\\ErrorViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T11:50:00.905Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "ActionMethodExecutor.cs",
-              "DocumentMoniker": "C:\\Users\\Benjm\\AppData\\Local\\Temp\\.vsdbgsrc\\1cc6d2a634203e0de348b5980fee97b87977d5074b436e24ff974f8438968be4\\ActionMethodExecutor.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Benjm\\AppData\\Local\\Temp\\.vsdbgsrc\\1cc6d2a634203e0de348b5980fee97b87977d5074b436e24ff974f8438968be4\\ActionMethodExecutor.cs",
-              "ToolTip": "C:\\Users\\Benjm\\AppData\\Local\\Temp\\.vsdbgsrc\\1cc6d2a634203e0de348b5980fee97b87977d5074b436e24ff974f8438968be4\\ActionMethodExecutor.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Benjm\\AppData\\Local\\Temp\\.vsdbgsrc\\1cc6d2a634203e0de348b5980fee97b87977d5074b436e24ff974f8438968be4\\ActionMethodExecutor.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-13T08:08:51.352Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "_ProduceTable.cshtml",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Shared\\_ProduceTable.cshtml",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\Shared\\_ProduceTable.cshtml",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Shared\\_ProduceTable.cshtml",
-              "RelativeToolTip": "ICTPRG535-556\\Views\\Shared\\_ProduceTable.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAUwBAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-14T10:49:15.039Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "favicon.ico -  [English (United States)] - Icon [32x32, 32 bit, BMP]",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\wwwroot\\favicon.ico",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\wwwroot\\favicon.ico",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\wwwroot\\favicon.ico -  [English (United States)] - Icon [32x32, 32 bit, BMP]",
-              "RelativeToolTip": "ICTPRG535-556\\wwwroot\\favicon.ico -  [English (United States)] - Icon [32x32, 32 bit, BMP]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001525|",
-              "WhenOpened": "2024-05-23T06:06:09.716Z",
-              "EditorCaption": " -  [English (United States)] - Icon [32x32, 32 bit, BMP]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "Error.cshtml",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Shared\\Error.cshtml",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\Shared\\Error.cshtml",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Shared\\Error.cshtml",
-              "RelativeToolTip": "ICTPRG535-556\\Views\\Shared\\Error.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-13T07:10:21.363Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "Microsoft.Common.CurrentVersion.targets",
-              "DocumentMoniker": "D:\\VisualStudio\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ToolTip": "D:\\VisualStudio\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2024-04-24T12:13:43.921Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "UserCart.cshtml",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Cart\\UserCart.cshtml",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\Cart\\UserCart.cshtml",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Cart\\UserCart.cshtml",
-              "RelativeToolTip": "ICTPRG535-556\\Views\\Cart\\UserCart.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-24T12:37:42.279Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "ControllerActionInvoker.cs",
-              "DocumentMoniker": "C:\\Users\\Benjm\\AppData\\Local\\Temp\\.vsdbgsrc\\89212dcd2f3257a3e3eec5938d09a0833888ece5c501afa26d6bce46396c248c\\ControllerActionInvoker.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Benjm\\AppData\\Local\\Temp\\.vsdbgsrc\\89212dcd2f3257a3e3eec5938d09a0833888ece5c501afa26d6bce46396c248c\\ControllerActionInvoker.cs",
-              "ToolTip": "C:\\Users\\Benjm\\AppData\\Local\\Temp\\.vsdbgsrc\\89212dcd2f3257a3e3eec5938d09a0833888ece5c501afa26d6bce46396c248c\\ControllerActionInvoker.cs [Read Only]",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Benjm\\AppData\\Local\\Temp\\.vsdbgsrc\\89212dcd2f3257a3e3eec5938d09a0833888ece5c501afa26d6bce46396c248c\\ControllerActionInvoker.cs [Read Only]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T08:41:21.802Z",
-              "EditorCaption": " [Read Only]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "Monitor.cs",
-              "DocumentMoniker": "C:\\Users\\Benjm\\AppData\\Local\\Temp\\.vsdbgsrc\\1ca169b5f8096b3fd01bc738c77225099d363dea7bb508bd774b256157500bca\\Monitor.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Benjm\\AppData\\Local\\Temp\\.vsdbgsrc\\1ca169b5f8096b3fd01bc738c77225099d363dea7bb508bd774b256157500bca\\Monitor.cs",
-              "ToolTip": "C:\\Users\\Benjm\\AppData\\Local\\Temp\\.vsdbgsrc\\1ca169b5f8096b3fd01bc738c77225099d363dea7bb508bd774b256157500bca\\Monitor.cs [Read Only]",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Benjm\\AppData\\Local\\Temp\\.vsdbgsrc\\1ca169b5f8096b3fd01bc738c77225099d363dea7bb508bd774b256157500bca\\Monitor.cs [Read Only]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T10:37:04.465Z",
-              "EditorCaption": " [Read Only]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "_ValidationScriptsPartial.cshtml",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "RelativeToolTip": "ICTPRG535-556\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-13T07:10:22.776Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "ResourceInvoker.cs",
-              "DocumentMoniker": "C:\\Users\\Benjm\\AppData\\Local\\Temp\\.vsdbgsrc\\de3c475d5d8ddfef73a8b47138c6692ac88195c0c2d9ee08c7dab15e957ac8b7\\ResourceInvoker.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Benjm\\AppData\\Local\\Temp\\.vsdbgsrc\\de3c475d5d8ddfef73a8b47138c6692ac88195c0c2d9ee08c7dab15e957ac8b7\\ResourceInvoker.cs",
-              "ToolTip": "C:\\Users\\Benjm\\AppData\\Local\\Temp\\.vsdbgsrc\\de3c475d5d8ddfef73a8b47138c6692ac88195c0c2d9ee08c7dab15e957ac8b7\\ResourceInvoker.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Benjm\\AppData\\Local\\Temp\\.vsdbgsrc\\de3c475d5d8ddfef73a8b47138c6692ac88195c0c2d9ee08c7dab15e957ac8b7\\ResourceInvoker.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T11:09:13.528Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\_ViewStart.cshtml",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\_ViewStart.cshtml",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\_ViewStart.cshtml",
-              "RelativeToolTip": "ICTPRG535-556\\Views\\_ViewStart.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAADAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-24T05:23:45.691Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "_ViewImports.cshtml",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\_ViewImports.cshtml",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\_ViewImports.cshtml",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\_ViewImports.cshtml",
-              "RelativeToolTip": "ICTPRG535-556\\Views\\_ViewImports.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-24T05:23:46.732Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\appsettings.json",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\appsettings.json",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\appsettings.json",
-              "RelativeToolTip": "ICTPRG535-556\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-04-24T05:24:06.16Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "ICTPRG535-556",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556.csproj",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\ICTPRG535-556.csproj",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556.csproj",
-              "RelativeToolTip": "ICTPRG535-556\\ICTPRG535-556.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-04-24T06:37:37.218Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "home.css",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\wwwroot\\css\\home.css",
-              "RelativeDocumentMoniker": "ICTPRG535-556\\wwwroot\\css\\home.css",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG4302\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\wwwroot\\css\\home.css",
-              "RelativeToolTip": "ICTPRG535-556\\wwwroot\\css\\home.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-04-24T05:25:19.918Z",
+              "WhenOpened": "2024-07-25T06:22:16.639Z",
               "EditorCaption": ""
             }
           ]
