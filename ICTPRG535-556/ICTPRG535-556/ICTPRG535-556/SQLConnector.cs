@@ -161,7 +161,7 @@ namespace DataMapper
                 }
                 catch (Exception ex)
                 {
-                    // Log the exception (you can replace this with your actual logging mechanism)
+                    // Log the exception
                     Console.WriteLine("An error occurred: " + ex.Message);
                 }
             }
@@ -572,7 +572,7 @@ namespace DataMapper
             {
                 dbConnection.Open();
 
-                // Retrieve the product price using the existing method
+        
                 var product = GetUserListProducts(itemId).FirstOrDefault();
 
                 if (product != null)

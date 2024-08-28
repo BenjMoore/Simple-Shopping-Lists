@@ -3,12 +3,56 @@
   "WorkspaceRootPath": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|e:\\old windows\\git repos\\simple-shopping-lists\\ictprg535-556\\ictprg535-556\\ictprg535-556\\sqlconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\sqlconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|e:\\old windows\\git repos\\simple-shopping-lists\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|e:\\old windows\\git repos\\simple-shopping-lists\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\auth\\loggedin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\views\\auth\\loggedin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|e:\\old windows\\git repos\\simple-shopping-lists\\ictprg535-556\\ictprg535-556\\ictprg535-556\\controllers\\aboutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\controllers\\aboutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|e:\\old windows\\git repos\\simple-shopping-lists\\ictprg535-556\\ictprg535-556\\ictprg535-556\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|e:\\old windows\\git repos\\simple-shopping-lists\\ictprg535-556\\ictprg535-556\\ictprg535-556\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|e:\\old windows\\git repos\\simple-shopping-lists\\ictprg535-556\\ictprg535-556\\ictprg535-556\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|e:\\old windows\\git repos\\simple-shopping-lists\\ictprg535-556\\ictprg535-556\\ictprg535-556\\controllers\\settingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\controllers\\settingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|e:\\old windows\\git repos\\simple-shopping-lists\\ictprg535-556\\ictprg535-556\\ictprg535-556\\models\\cartmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\models\\cartmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|e:\\old windows\\git repos\\simple-shopping-lists\\ictprg535-556\\ictprg535-556\\ictprg535-556\\models\\databasemodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\models\\databasemodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|e:\\old windows\\git repos\\simple-shopping-lists\\ictprg535-556\\ictprg535-556\\ictprg535-556\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|e:\\old windows\\git repos\\simple-shopping-lists\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|e:\\old windows\\git repos\\simple-shopping-lists\\ictprg535-556\\ictprg535-556\\ictprg535-556\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|e:\\old windows\\git repos\\simple-shopping-lists\\ictprg535-556\\ictprg535-556\\ictprg535-556\\sqlconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\sqlconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|e:\\old windows\\git repos\\simple-shopping-lists\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\cart\\select.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -17,10 +61,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|e:\\old windows\\git repos\\simple-shopping-lists\\ictprg535-556\\ictprg535-556\\ictprg535-556\\views\\cart\\selectlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\views\\cart\\selectlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|e:\\old windows\\git repos\\simple-shopping-lists\\ictprg535-556\\ictprg535-556\\ictprg535-556\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D92D518A-5322-4624-9479-ADD06EA5E0BA}|ICTPRG535-556\\ICTPRG535-556.csproj|solutionrelative:ictprg535-556\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Benjamin Moore\\AppData\\Local\\SourceServer\\a6c925f62e220d3679dd8caa3ed034b253ea864096f47b909fafaab4ad38fe1d\\Dapper\\SqlMapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -33,23 +73,154 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Auth\\Login.cshtml",
+              "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\Auth\\Login.cshtml",
+              "ToolTip": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Auth\\Login.cshtml",
+              "RelativeToolTip": "ICTPRG535-556\\Views\\Auth\\Login.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-28T04:39:46.363Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "LoggedIn.cshtml",
+              "DocumentMoniker": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Auth\\LoggedIn.cshtml",
+              "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\Auth\\LoggedIn.cshtml",
+              "ToolTip": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Auth\\LoggedIn.cshtml",
+              "RelativeToolTip": "ICTPRG535-556\\Views\\Auth\\LoggedIn.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-28T04:39:45.603Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AboutController.cs",
+              "DocumentMoniker": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\AboutController.cs",
+              "RelativeDocumentMoniker": "ICTPRG535-556\\Controllers\\AboutController.cs",
+              "ToolTip": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\AboutController.cs",
+              "RelativeToolTip": "ICTPRG535-556\\Controllers\\AboutController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T04:39:39.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "ICTPRG535-556\\Controllers\\AuthController.cs",
+              "ToolTip": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "ICTPRG535-556\\Controllers\\AuthController.cs",
+              "ViewState": "AQIAADMAAAAABQAAAAAKwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T04:39:33.942Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BaseController.cs",
+              "DocumentMoniker": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\BaseController.cs",
+              "RelativeDocumentMoniker": "ICTPRG535-556\\Controllers\\BaseController.cs",
+              "ToolTip": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\BaseController.cs",
+              "RelativeToolTip": "ICTPRG535-556\\Controllers\\BaseController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T04:39:32.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SettingsController.cs",
+              "DocumentMoniker": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\SettingsController.cs",
+              "RelativeDocumentMoniker": "ICTPRG535-556\\Controllers\\SettingsController.cs",
+              "ToolTip": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\SettingsController.cs",
+              "RelativeToolTip": "ICTPRG535-556\\Controllers\\SettingsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T04:37:29.946Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CartModel.cs",
+              "DocumentMoniker": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Models\\CartModel.cs",
+              "RelativeDocumentMoniker": "ICTPRG535-556\\Models\\CartModel.cs",
+              "ToolTip": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Models\\CartModel.cs",
+              "RelativeToolTip": "ICTPRG535-556\\Models\\CartModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T04:37:28.726Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DatabaseModels.cs",
+              "DocumentMoniker": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Models\\DatabaseModels.cs",
+              "RelativeDocumentMoniker": "ICTPRG535-556\\Models\\DatabaseModels.cs",
+              "ToolTip": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Models\\DatabaseModels.cs",
+              "RelativeToolTip": "ICTPRG535-556\\Models\\DatabaseModels.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T04:37:27.926Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "ICTPRG535-556\\Models\\ErrorViewModel.cs",
+              "ToolTip": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "ICTPRG535-556\\Models\\ErrorViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T04:37:26.919Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\Home\\Index.cshtml",
+              "ToolTip": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "ICTPRG535-556\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-28T04:37:24.523Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "HomeController.cs",
               "DocumentMoniker": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "ICTPRG535-556\\Controllers\\HomeController.cs",
               "ToolTip": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Controllers\\HomeController.cs",
               "RelativeToolTip": "ICTPRG535-556\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAJQAAAAAZmZmZoYwwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T04:06:51.828Z"
+              "WhenOpened": "2024-08-28T04:06:51.828Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 13,
               "Title": "Select.cshtml",
               "DocumentMoniker": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Cart\\Select.cshtml",
               "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\Cart\\Select.cshtml",
@@ -61,7 +232,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 14,
               "Title": "SelectList.cshtml",
               "DocumentMoniker": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Views\\Cart\\SelectList.cshtml",
               "RelativeDocumentMoniker": "ICTPRG535-556\\Views\\Cart\\SelectList.cshtml",
@@ -73,7 +244,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 15,
               "Title": "SqlMapper.cs",
               "DocumentMoniker": "C:\\Users\\Benjamin Moore\\AppData\\Local\\SourceServer\\a6c925f62e220d3679dd8caa3ed034b253ea864096f47b909fafaab4ad38fe1d\\Dapper\\SqlMapper.cs",
               "ToolTip": "C:\\Users\\Benjamin Moore\\AppData\\Local\\SourceServer\\a6c925f62e220d3679dd8caa3ed034b253ea864096f47b909fafaab4ad38fe1d\\Dapper\\SqlMapper.cs",
@@ -83,25 +254,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Program.cs",
               "RelativeDocumentMoniker": "ICTPRG535-556\\Program.cs",
               "ToolTip": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\Program.cs",
               "RelativeToolTip": "ICTPRG535-556\\Program.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAkwBAAAAApAAAA",
+              "ViewState": "AQIAABwAAAAg//////8qwBAAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-25T06:32:01.878Z"
+              "WhenOpened": "2024-07-25T06:32:01.878Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 12,
               "Title": "SQLConnector.cs",
               "DocumentMoniker": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\SQLConnector.cs",
               "RelativeDocumentMoniker": "ICTPRG535-556\\SQLConnector.cs",
               "ToolTip": "E:\\OLD WINDOWS\\Git Repos\\Simple-Shopping-Lists\\ICTPRG535-556\\ICTPRG535-556\\ICTPRG535-556\\SQLConnector.cs",
               "RelativeToolTip": "ICTPRG535-556\\SQLConnector.cs",
-              "ViewState": "AQIAAGIAAAAAcGZmZmYPwDsAAAAhAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAKoAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-25T06:22:16.639Z",
               "EditorCaption": ""
