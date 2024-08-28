@@ -12,26 +12,22 @@ namespace DataMapper
     public class DataAccess
     {
         private readonly string connectionString;
+        private readonly string serverCon;
 
         public DataAccess()
         {
-            this.connectionString = "Server=localhost;DataSource='ShoppingList';Trusted_Connection=True;TrustServerCertificate=True;";
-           
+            this.connectionString = "Server=localhost;Database=ShoppingList;Trusted_Connection=True;TrustServerCertificate=True;";
+            this.serverCon = "Server=localhost;Trusted_Connection=True;TrustServerCertificate=True;";
+
+
         }
 
         #region Initialise Database
 
-        public void InitializeDatabase()
+    
+        public void SetupDatabaseAndTables()
         {
-            SqlConnection connection = new SqlConnection(connectionString);
-            SetupDatabaseAndTables();
-
-                          
-        }
-
-        private void SetupDatabaseAndTables()
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(serverCon))
             {
                 connection.Open();
 
@@ -100,64 +96,64 @@ namespace DataMapper
                     string checkAndPopulateTablesQuery = @"
             USE ShoppingList;
 
-            IF NOT EXISTS (SELECT * FROM Lists)
+            SELECT * FROM Lists
             BEGIN
                 INSERT INTO Lists (UserID, ItemID, ListName, ListIndex, Quantity, Price, Date) VALUES 
                 (1, 1, 'Example List', 1, 2, 11.00, GETDATE());
             END;
 
-            IF NOT EXISTS (SELECT * FROM Users)
+            SELECT * FROM Users
             BEGIN
                 INSERT INTO Users (Email, Lists) VALUES 
                 ('Example@test.com', 0);
             END;
 
-            IF NOT EXISTS (SELECT * FROM Produce)
+           SELECT * FROM Produce
             BEGIN
                 INSERT INTO Produce (ItemID, Name, Unit, Price) VALUES 
-                (1, 'Granny Smith Apples', '1kg', '$5.50'), 
-                (2, 'Fresh tomatoes', '500g', '$5.90'), 
-                (3, 'Watermelon', 'Whole', '$6.60'), 
-                (4, 'Cucumber', '1 whole', '$1.90'), 
-                (5, 'Red potato washed', '1kg', '$4.00'), 
-                (6, 'Red tipped bananas', '1kg', '$4.90'), 
-                (7, 'Red onion', '1kg', '$3.50'), 
-                (8, 'Carrots', '1kg', '$2.00'), 
-                (9, 'Iceburg Lettuce', '1', '$2.50'), 
-                (10, 'Helga''s Wholemeal', '1', '$3.70'), 
-                (11, 'Free range chicken', '1kg', '$7.50'), 
-                (12, 'Manning Valley 6-pk', '6 eggs', '$3.60'), 
-                (13, 'A2 light milk', '1 litre', '$2.90'), 
-                (14, 'Chobani Strawberry Yoghurt', '1', '$1.50'), 
-                (15, 'Lurpak Salted Blend', '250g', '$5.00'), 
-                (16, 'Bega Farmers Tasty', '250g', '$4.00'), 
-                (17, 'Babybel Mini', '100g', '$4.20'), 
-                (18, 'Cobram EVOO', '375ml', '$8.00'), 
-                (19, 'Heinz Tomato Soup', '535g', '$2.50'), 
-                (20, 'John West Tuna can', '95g', '$1.50'), 
-                (21, 'Cadbury Dairy Milk', '200g', '$5.00'), 
-                (22, 'Coca Cola', '2 litre', '$2.85'), 
-                (23, 'Smith''s Original Share Pack Crisps', '170g', '$3.29'), 
-                (24, 'Birds Eye Fish Fingers', '375g', '$4.50'), 
-                (25, 'Berri Orange Juice', '2 litre', '$6.00'), 
-                (26, 'Vegemite', '380g', '$6.00'), 
-                (27, 'Cheddar Shapes', '175g', '$2.00'), 
-                (28, 'Colgate Total Toothpaste Original', '110g', '$3.50'), 
-                (29, 'Milo Chocolate Malt', '200g', '$4.00'), 
-                (30, 'Weet Bix Saniatarium Organic', '750g', '$5.33'), 
-                (31, 'Lindt Excellence 70% Cocoa Block', '100g', '$4.25'), 
-                (32, 'Original Tim Tams Choclate', '200g', '$3.65'), 
-                (33, 'Philadelphia Original Cream Cheese', '250g', '$4.30'), 
-                (34, 'Moccana Classic Instant Medium Roast', '100g', '$6.00'), 
-                (35, 'Capilano Squeezable Honey', '500g', '$7.35'), 
-                (36, 'Nutella jar', '400g', '$4.00'), 
-                (37, 'Arnott''s Scotch Finger', '250g', '$2.85'), 
-                (38, 'South Cape Greek Feta', '200g', '$5.00'), 
-                (39, 'Sacla Pasta Tomato Basil Sauce', '420g', '$4.50'), 
-                (40, 'Primo English Ham', '100g', '$3.00'), 
-                (41, 'Primo Short cut rindless Bacon', '175g', '$5.00'), 
-                (42, 'Golden Circle Pineapple Pieces in natural juice', '440g', '$3.25'), 
-                (43, 'San Remo Linguine Pasta No 1', '500g', '$1.95');
+                (1, 'Granny Smith Apples', '1kg', '5.50'), 
+                (2, 'Fresh tomatoes', '500g', '5.90'), 
+                (3, 'Watermelon', 'Whole', '6.60'), 
+                (4, 'Cucumber', '1 whole', '1.90'), 
+                (5, 'Red potato washed', '1kg', '4.00'), 
+                (6, 'Red tipped bananas', '1kg', '4.90'), 
+                (7, 'Red onion', '1kg', '3.50'), 
+                (8, 'Carrots', '1kg', '2.00'), 
+                (9, 'Iceburg Lettuce', '1', '2.50'), 
+                (10, 'Helga''s Wholemeal', '1', '3.70'), 
+                (11, 'Free range chicken', '1kg', '7.50'), 
+                (12, 'Manning Valley 6-pk', '6 eggs', '3.60'), 
+                (13, 'A2 light milk', '1 litre', '2.90'), 
+                (14, 'Chobani Strawberry Yoghurt', '1', '1.50'), 
+                (15, 'Lurpak Salted Blend', '250g', '5.00'), 
+                (16, 'Bega Farmers Tasty', '250g', '4.00'), 
+                (17, 'Babybel Mini', '100g', '4.20'), 
+                (18, 'Cobram EVOO', '375ml', '8.00'), 
+                (19, 'Heinz Tomato Soup', '535g', '2.50'), 
+                (20, 'John West Tuna can', '95g', '1.50'), 
+                (21, 'Cadbury Dairy Milk', '200g', '5.00'), 
+                (22, 'Coca Cola', '2 litre', '2.85'), 
+                (23, 'Smith''s Original Share Pack Crisps', '170g', '3.29'), 
+                (24, 'Birds Eye Fish Fingers', '375g', '4.50'), 
+                (25, 'Berri Orange Juice', '2 litre', '6.00'), 
+                (26, 'Vegemite', '380g', '6.00'), 
+                (27, 'Cheddar Shapes', '175g', '2.00'), 
+                (28, 'Colgate Total Toothpaste Original', '110g', '3.50'), 
+                (29, 'Milo Chocolate Malt', '200g', '4.00'), 
+                (30, 'Weet Bix Saniatarium Organic', '750g', '5.33'), 
+                (31, 'Lindt Excellence 70% Cocoa Block', '100g', '4.25'), 
+                (32, 'Original Tim Tams Choclate', '200g', '3.65'), 
+                (33, 'Philadelphia Original Cream Cheese', '250g', '4.30'), 
+                (34, 'Moccana Classic Instant Medium Roast', '100g', '6.00'), 
+                (35, 'Capilano Squeezable Honey', '500g', '7.35'), 
+                (36, 'Nutella jar', '400g', '4.00'), 
+                (37, 'Arnott''s Scotch Finger', '250g', '2.85'), 
+                (38, 'South Cape Greek Feta', '200g', '5.00'), 
+                (39, 'Sacla Pasta Tomato Basil Sauce', '420g', '4.50'), 
+                (40, 'Primo English Ham', '100g', '3.00'), 
+                (41, 'Primo Short cut rindless Bacon', '175g', '5.00'), 
+                (42, 'Golden Circle Pineapple Pieces in natural juice', '440g', '3.25'), 
+                (43, 'San Remo Linguine Pasta No 1', '500g', '1.95');
             END;";
 
                     SqlCommand checkAndPopulateTablesCommand = new SqlCommand(checkAndPopulateTablesQuery, connection);
