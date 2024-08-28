@@ -22,7 +22,7 @@ namespace DataMapper
 
         }
 
-        #region Initialise Database
+    #region Initialise Database
 
     
         public void SetupDatabaseAndTables()
@@ -52,14 +52,14 @@ namespace DataMapper
             IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = N'Lists')
             BEGIN
                 CREATE TABLE Lists (
-                    ListID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+                    ListID INT NOT NULL,
                     UserID INT NOT NULL,
                     ItemID INT NOT NULL,
-                    ListName NCHAR(50) NOT NULL,
-                    ListIndex INT NOT NULL,
-                    Quantity INT NOT NULL,
-                    Price FLOAT NOT NULL,
-                    Date DATETIME NOT NULL
+                    ListName NCHAR(50),
+                    ListIndex INT,
+                    Quantity INT,
+                    Price FLOAT,
+                    Date DATETIME 
                 );
             END;";
                     SqlCommand createTableListsCommand = new SqlCommand(createTableListsQuery, connection);
@@ -98,14 +98,14 @@ namespace DataMapper
 
             SELECT * FROM Lists
             BEGIN
-                INSERT INTO Lists (UserID, ItemID, ListName, ListIndex, Quantity, Price, Date) VALUES 
-                (1, 1, 'Example List', 1, 2, 11.00, GETDATE());
+                INSERT INTO Lists (ListID,UserID, ItemID, ListName, ListIndex, Quantity, Price, Date) VALUES 
+                (1,1, 1, 'Example List', 1, 2, 11.00, GETDATE());
             END;
 
             SELECT * FROM Users
             BEGIN
-                INSERT INTO Users (Email, Lists) VALUES 
-                ('Example@test.com', 0);
+                INSERT INTO Users (UserID,Email, Lists) VALUES 
+                (1, 'newuser@example.com', 0);
             END;
 
            SELECT * FROM Produce
@@ -169,7 +169,7 @@ namespace DataMapper
 
 
         #endregion
-        #region GET
+    #region GET
         public ArrayList GetUsers()
         {
             ArrayList users = new ArrayList();
