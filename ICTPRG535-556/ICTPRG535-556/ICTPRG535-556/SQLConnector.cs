@@ -22,9 +22,9 @@ namespace DataMapper
 
         }
 
-    #region Initialise Database
+        #region Initialise Database
 
-    
+
         public void SetupDatabaseAndTables()
         {
             using (SqlConnection connection = new SqlConnection(serverCon))
@@ -97,19 +97,23 @@ namespace DataMapper
                     string checkAndPopulateTablesQuery = @"
             USE ShoppingList;
 
-            SELECT * FROM Lists
+            -- Check if the Lists table is empty
+            IF NOT EXISTS (SELECT 1 FROM Lists)
             BEGIN
-                INSERT INTO Lists (ListID,UserID, ItemID, ListName, ListIndex, Quantity, Price, FinalisedDate,Date) VALUES 
-                (1,1, 1, 'Example List', 1, 2, 11.00, GETDATE(),GETDATE());
+                INSERT INTO Lists (ListID, UserID, ItemID, ListName, ListIndex, Quantity, Price, Date) VALUES 
+                (1, 1, 1, 'Example List', 1, 2, 11.00, GETDATE());
+                
             END;
 
-            SELECT * FROM Users
+            -- Check if the Users table is empty
+            IF NOT EXISTS (SELECT 1 FROM Users)
             BEGIN
-                INSERT INTO Users (UserID,Email, Lists) VALUES 
+                INSERT INTO Users (UserID, Email, Lists) VALUES 
                 (1, 'newuser@example.com', 0);
             END;
 
-           SELECT * FROM Produce
+            -- Check if the Produce table is empty
+            IF NOT EXISTS (SELECT 1 FROM Produce)
             BEGIN
                 INSERT INTO Produce (ItemID, Name, Unit, Price) VALUES 
                 (1, 'Granny Smith Apples', '1kg', '5.50'), 
@@ -170,7 +174,7 @@ namespace DataMapper
 
 
         #endregion
-    #region GET
+        #region GET
         public ArrayList GetUsers()
         {
             ArrayList users = new ArrayList();

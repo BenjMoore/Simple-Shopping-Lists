@@ -19,7 +19,7 @@
                 <li><a href="/Login">Login</a></li>
                 <li><a href="/Cart/Select">List History</a></li>
                 <li>
-                    <a href="/Cart" class="btn btn-primary" style="color: white; padding: 5px 15px; border-radius: 5px;">
+                    <a href="javascript:void(0);" class="btn btn-primary" id="cartButton" style="color: white; padding: 5px 15px; border-radius: 5px;">
                         <span class="glyphicon glyphicon-shopping-cart"></span> Cart
                     </a>
                 </li>
@@ -39,10 +39,51 @@
         </div>
     </footer>
 
+    <!-- Modal for the cart -->
+    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Current Cart</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Cart items will be dynamically added here, example: -->
+                    <p>Your cart is empty.</p> <!-- You can dynamically update this content from your controller -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+        $('#cartButton').on('click', function () {
+            $.ajax({
+                url: '@Url.Action("CurrentList", "Cart")', // Ensure correct action and controller
+                type: 'GET',
+                success: function (response) {
+                    $('#modalContent').html(response); 
+                    $('#cartModal').modal('show'); // Show the modal
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error: ", status, error);
+                }
+            });
+        });
+
+    </script>
+
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

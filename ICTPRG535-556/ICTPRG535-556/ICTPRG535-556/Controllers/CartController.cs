@@ -135,6 +135,55 @@ public class CartController : BaseController
             return RedirectToAction("Login", "Auth");
         }
     }
+    public IActionResult CurrentList()
+    {
+        if (HttpContext.Session.GetInt32("UserId").HasValue)
+        {
+            int loggedInUserId = HttpContext.Session.GetInt32("UserId").Value;
+
+            // Retrieve the first non-finalized list for the user
+            var userLists = _dataAccess.GetAllUserLists(loggedInUserId);
+            var currentCart = userLists.FirstOrDefault(list => list.FinalisedDate == null);
+
+            if (currentCart != null)
+            {
+                // Get list items for the current cart
+                var listItems = _dataAccess.GetListItems(currentCart.ListID);
+                decimal totalPrice = CalculateTotalPrice(listItems);
+
+                // Use SessionCartDTO to encapsulate list and produce item details
+                var sessionCart = new SessionCartDTO
+                {
+                    ListID = currentCart.ListID,
+                    ListName = currentCart.ListName,
+                    UserID = loggedInUserId,
+                    FinalisedDate = currentCart.FinalisedDate,
+                    Quantity = listItems.Sum(item => item.Quantity),
+                    ProduceItems = listItems.Select(item => new ProduceDTO
+                    {
+                        ItemID = item.ItemID,
+                        Name = item.ListName,
+                        Unit = item.Unit,
+                        Price = item.Price,
+                        Quantity = item.Quantity // Assign Quantity here if available
+                    }).ToList()
+
+                };
+
+                ViewData["TotalPrice"] = totalPrice;
+                return PartialView("CurrentCart", sessionCart);
+            }
+            else
+            {
+                ViewBag.Message = "No current cart found.";
+                return PartialView("CurrentCart", null);
+            }
+        }
+        else
+        {
+            return RedirectToAction("Login", "Auth");
+        }
+    }
 
 
 
