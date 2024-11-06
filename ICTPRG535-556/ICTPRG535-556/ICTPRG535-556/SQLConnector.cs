@@ -59,6 +59,7 @@ namespace DataMapper
                     ListIndex INT,
                     Quantity INT,
                     Price FLOAT,
+                    FinalisedDate DATETIME,
                     Date DATETIME 
                 );
             END;";
@@ -98,8 +99,8 @@ namespace DataMapper
 
             SELECT * FROM Lists
             BEGIN
-                INSERT INTO Lists (ListID,UserID, ItemID, ListName, ListIndex, Quantity, Price, Date) VALUES 
-                (1,1, 1, 'Example List', 1, 2, 11.00, GETDATE());
+                INSERT INTO Lists (ListID,UserID, ItemID, ListName, ListIndex, Quantity, Price, FinalisedDate,Date) VALUES 
+                (1,1, 1, 'Example List', 1, 2, 11.00, GETDATE(),GETDATE());
             END;
 
             SELECT * FROM Users
@@ -497,6 +498,16 @@ namespace DataMapper
             }
         }
 
+        public IEnumerable<ListDTO> GetAllUserListsFinalised(int userId)
+        {
+            using (IDbConnection dbConnection = new SqlConnection(connectionString))
+            {
+                dbConnection.Open();
+                return dbConnection.Query<ListDTO>(
+                    "SELECT ListID, ListName, UserID, FinalisedDate FROM Lists WHERE UserID = @UserId",
+                    new { UserId = userId });
+            }
+        }
 
         public IEnumerable<ProduceDTO> GetUserListProducts(int itemID)
         {

@@ -140,12 +140,13 @@ namespace ICTPRG535_556.Controllers
         {
             if (string.IsNullOrWhiteSpace(search))
             {
-                return View("index");
+                return View("Index");
             }
 
             List<ProduceDTO> searchResults = _dataAccess.GetProduceByItemName(search);
-            return PartialView("_ProduceTable", searchResults);
+            return PartialView("_ProductCard", searchResults);
         }
+
 
 
         public IActionResult Profile(int userID)

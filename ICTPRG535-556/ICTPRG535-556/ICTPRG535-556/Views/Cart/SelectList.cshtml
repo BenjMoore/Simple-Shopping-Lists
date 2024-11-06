@@ -52,22 +52,24 @@
             }
         </script>
 
-
         <h2 style="text-align:center;">
             <br /><br />
-            <a href="/Cart/CreateNewList?id=@loggedInUserId" class="button"><button class="btn btn-primary" style="margin-left:20px; margin-right:20px; margin-top:10px;">New List</button></a>
-            <a href="/Cart/Select" class="button"><button class="btn btn-primary" style="margin-left:20px; margin-right:20px; margin-top:10px;">Select / Delete List</button></a>
-            <a href="/" class="button"><button class="btn btn-primary" style="margin-left:20px; margin-right:20px; margin-top:10px;">Add Item</button></a>
+            <a href="/Cart/CreateNewList?id=@loggedInUserId" class="button">
+                <button class="btn btn-primary" style="margin-left:20px; margin-right:20px; margin-top:10px;">New List</button>
+            </a>
+            <a href="/Cart/Select" class="button">
+                <button class="btn btn-primary" style="margin-left:20px; margin-right:20px; margin-top:10px;">Select / Delete List</button>
+            </a>
+            <a href="/" class="button">
+                <button class="btn btn-primary" style="margin-left:20px; margin-right:20px; margin-top:10px;">Add Item</button>
+            </a>
         </h2>
     </div>
 
     <div class="container">
-
-      
-
         <main role="main" class="pb-3">
             <section id="Table" style="left:0;">
-                <h2 style="text-align:center">Selected List</h2>
+                <h2 style="text-align:center">List History</h2> <!-- Updated title here -->
                 <table>
                     <thead>
                         <tr>
@@ -75,25 +77,20 @@
                             <th>Quantity</th>
                             <th>Unit</th>
                             <th>Price</th>
-                            
                         </tr>
                     </thead>
                     <tbody>
-
-                            @foreach (var item in Model)
-                            {
+                        @foreach (var item in Model)
+                        {
                             <tr>
                                 <td>@item.Name</td>
                                 <td>
-                                        @item.Quantity
-                                    <button style="margin-left:20px" class="btn btn-light" onclick="updateQuantity(@item.ItemID, @item.ListID, -1)">-</button>
-                                    <button class="btn btn-light" onclick="updateQuantity(@item.ItemID, @item.ListID, 1)">+</button>
+                                    @item.Quantity
                                 </td>
                                 <td>@item.Unit</td>
                                 <td>$@item.Price </td>
-                                
                             </tr>
-                            }          
+                        }
                     </tbody>
                 </table>
                 <div>Total Price: $@(ViewData["TotalPrice"])</div>

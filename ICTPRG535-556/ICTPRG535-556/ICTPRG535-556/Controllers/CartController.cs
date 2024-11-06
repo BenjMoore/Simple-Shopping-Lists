@@ -50,6 +50,7 @@ public class CartController : BaseController
                 // Iterate through each list item
                 foreach (var listItem in listItems)
                 {
+                    
                     // Retrieve products for the current list item
                     var userProducts = _dataAccess.GetUserListProducts(listItem.ItemID);
 
@@ -108,13 +109,15 @@ public class CartController : BaseController
             // Retrieve the logged-in user ID from the session
             int loggedInUserId = HttpContext.Session.GetInt32("UserId").Value;
 
-            // Retrieve all lists for the logged-in user
-            var userLists = _dataAccess.GetAllUserLists(loggedInUserId);
+            // Retrieve all lists for the logged-in user and filter for finalized lists
+            var userLists = _dataAccess.GetAllUserListsFinalised(loggedInUserId)
+                                       .Where(list => list.FinalisedDate != null)
+                                       .ToList();
 
             // Dictionary to hold list IDs and their total prices
             Dictionary<int, decimal> listTotalPrices = new Dictionary<int, decimal>();
 
-            // Calculate total price for each list
+            // Calculate total price for each finalized list
             foreach (var list in userLists)
             {
                 var listItems = _dataAccess.GetListItems(list.ListID);
@@ -132,6 +135,7 @@ public class CartController : BaseController
             return RedirectToAction("Login", "Auth");
         }
     }
+
 
 
     public IActionResult SelectList(int listId)

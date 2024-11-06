@@ -4,9 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] Shopping..</title>
-    @{
-        
-    }
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ICTPRG535_556.styles.css" asp-append-version="true" />
@@ -20,11 +17,16 @@
                 <li><a href="/About">About Us</a></li>
                 <li><a href="/Settings">Settings</a></li>
                 <li><a href="/Login">Login</a></li>
-
-                <li><a href="/Cart/Select">Lists</a></li>
+                <li><a href="/Cart/Select">List History</a></li>
+                <li>
+                    <a href="/Cart" class="btn btn-primary" style="color: white; padding: 5px 15px; border-radius: 5px;">
+                        <span class="glyphicon glyphicon-shopping-cart"></span> Cart
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -33,9 +35,10 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            2024 - ICTPRG535-556 -</a>
+            2024 - ICTPRG535-556
         </div>
     </footer>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

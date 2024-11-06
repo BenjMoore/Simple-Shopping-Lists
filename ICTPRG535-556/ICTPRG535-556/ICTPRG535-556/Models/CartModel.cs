@@ -11,6 +11,7 @@
         public int UserID { get; set; }
         public int Quantity { get; set; }
         public string ListName { get; set; }
+        public DateTime? FinalisedDate { get; set; }
         public List<ProduceDTO> ProduceItems { get; set; }
     }
 }
