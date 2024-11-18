@@ -135,55 +135,80 @@ public class CartController : BaseController
             return RedirectToAction("Login", "Auth");
         }
     }
-    public IActionResult CurrentList()
+    public IActionResult CurrentCart()
     {
+        // Check if the logged-in user ID is available in the session
         if (HttpContext.Session.GetInt32("UserId").HasValue)
         {
+            // Retrieve the logged-in user ID from the session
             int loggedInUserId = HttpContext.Session.GetInt32("UserId").Value;
 
-            // Retrieve the first non-finalized list for the user
-            var userLists = _dataAccess.GetAllUserLists(loggedInUserId);
-            var currentCart = userLists.FirstOrDefault(list => list.FinalisedDate == null);
+            // Retrieve all unfinalized lists for the logged-in user
+            var userLists = _dataAccess.GetAllUserListsFinalised(loggedInUserId)
+                                          .Where(list => list.FinalisedDate == null)
+                                          .ToList();
 
-            if (currentCart != null)
+            // List to hold cart items for the current unfinalized lists
+            List<SessionCartDTO> cartItems = new List<SessionCartDTO>();
+
+            // Dictionary to hold total prices for each unfinalized list
+            Dictionary<int, decimal> listTotalPrices = new Dictionary<int, decimal>();
+
+            // Iterate through each unfinalized list
+            foreach (var list in userLists)
             {
-                // Get list items for the current cart
-                var listItems = _dataAccess.GetListItems(currentCart.ListID);
+                var listItems = _dataAccess.GetListItems(list.ListID);
                 decimal totalPrice = CalculateTotalPrice(listItems);
 
-                // Use SessionCartDTO to encapsulate list and produce item details
-                var sessionCart = new SessionCartDTO
+                // Add the total price to the dictionary
+                listTotalPrices[list.ListID] = totalPrice;
+
+                // Iterate through the list items to create cart items
+                foreach (var listItem in listItems)
                 {
-                    ListID = currentCart.ListID,
-                    ListName = currentCart.ListName,
-                    UserID = loggedInUserId,
-                    FinalisedDate = currentCart.FinalisedDate,
-                    Quantity = listItems.Sum(item => item.Quantity),
-                    ProduceItems = listItems.Select(item => new ProduceDTO
+                    // Retrieve products for the current list item
+                    var userProducts = _dataAccess.GetUserListProducts(listItem.ItemID);
+
+                    foreach (var product in userProducts)
                     {
-                        ItemID = item.ItemID,
-                        Name = item.ListName,
-                        Unit = item.Unit,
-                        Price = item.Price,
-                        Quantity = item.Quantity // Assign Quantity here if available
-                    }).ToList()
+                        int? nullableQuantity = _dataAccess.GetItemQuantityInList(list.ListID, product.ItemID);
+                        int quantity = nullableQuantity ?? 1;
 
-                };
+                        // Create a new SessionCartDTO and add it to the list
+                        var cartItem = new SessionCartDTO
+                        {
+                            ItemID = product.ItemID,
+                            Name = _dataAccess.GetProductName(product.ItemID),
+                            Price = Convert.ToString(_dataAccess.GetProductPriceByItemId(product.ItemID)),
+                            Unit = _dataAccess.GetProductWeight(product.ItemID),
+                            ListID = list.ListID,
+                            Quantity = quantity
+                        };
 
-                ViewData["TotalPrice"] = totalPrice;
-                return PartialView("CurrentCart", sessionCart);
+                        cartItems.Add(cartItem);
+                    }
+                }
+
+                // Save the list name in the session (if available)
+                if (!string.IsNullOrEmpty(list.ListName))
+                {
+                    HttpContext.Session.SetString("ListName", list.ListName);
+                }
             }
-            else
-            {
-                ViewBag.Message = "No current cart found.";
-                return PartialView("CurrentCart", null);
-            }
+
+            // Pass the total prices for the lists to the view
+            ViewBag.ListTotalPrices = listTotalPrices;
+
+            // Return the view with the cart items for the unfinalized lists
+            return View(cartItems);
         }
         else
         {
+            // User is not logged in, redirect to the login page
             return RedirectToAction("Login", "Auth");
         }
     }
+
 
 
 

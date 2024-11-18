@@ -1,44 +1,106 @@
-﻿@model SessionCartDTO
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Current Cart</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ICTPRG535_556.styles.css" asp-append-version="true" />
+</head>
+<body class="light-mode">
+    <div class="container mt-4">
+        @model List<SessionCartDTO>
+        @{
+            var loggedInUserId = ViewBag.LoggedInUserId as int?;
+        }
 
-<div class="modal-header">
-    <h5 class="modal-title">Current Cart: @Model.ListName ?? "No Current Cart"</h5>
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
+        <script>
+            function updateQuantity(itemId, listId, quantityChange) {
+                $.ajax({
+                    url: '@Url.Action("UpdateQuantity", "Cart")',
+                    type: 'POST',
+                    data: { itemId, listId, quantityChange },
+                    success: function () {
+                        location.reload();
+                    },
+                    error: function (xhr) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
 
-<div class="modal-body">
-    @if (Model != null && Model.ProduceItems.Any())
-    {
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Item Name</th>
-                    <th>Quantity</th>
-                    <th>Unit</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.ProduceItems)
+            function deleteProduce(itemId, listId, userId) {
+                $.ajax({
+                    url: '@Url.Action("DeleteProduce", "Cart")',
+                    type: 'POST',
+                    data: { itemId, listId, userId },
+                    success: function () {
+                        location.reload();
+                    },
+                    error: function (xhr) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        </script>
+
+        <div class="text-center mb-4">
+            <a href="/Cart/CreateNewList?id=@loggedInUserId" class="btn btn-primary mx-2">New List</a>
+            <a href="/Cart/Select" class="btn btn-primary mx-2">Select / Delete List</a>
+            <a href="/" class="btn btn-primary mx-2">Add Item</a>
+        </div>
+
+        <main role="main" class="pb-3">
+            <section>
+                <h2 class="text-center mb-4">Current Cart</h2>
+                @if (Model != null && Model.Any())
                 {
-                    <tr>
-                        <td>@item.Name</td>
-                        <td>@item.Quantity</td>
-                        <td>@item.Unit</td>
-                        <td>$@item.Price</td>
-                    </tr>
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Item Name</th>
+                                <th>Quantity</th>
+                                <th>Unit</th>
+                                <th>Price</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm" onclick="updateQuantity(@item.ItemID, @item.ListID, -1)">-</button>
+                                        @item.Quantity
+                                        <button class="btn btn-primary btn-sm" onclick="updateQuantity(@item.ItemID, @item.ListID, 1)">+</button>
+                                    </td>
+                                    <td>@item.Unit</td>
+                                    <td>$@item.Price</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm" onclick="deleteProduce(@item.ItemID, @item.ListID, @loggedInUserId)">Delete</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div class="text-right font-weight-bold mt-3">
+                        Total Price: $@(ViewData["TotalPrice"] ?? 0)
+                    </div>
                 }
-            </tbody>
-        </table>
-        <div class="text-right"><strong>Total Price:</strong> $@Model.Price</div>
-    }
-    else
-    {
-        <p>No current cart found.</p>
-    }
-</div>
+                else
+                {
+                    <div class="alert alert-info text-center mt-4">
+                        No items found in your cart.
+                    </div>
+                }
+            </section>
+        </main>
+    </div>
 
-<div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-</div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
