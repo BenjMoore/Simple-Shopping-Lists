@@ -160,11 +160,7 @@ public class CartController : BaseController
             return RedirectToAction("Login", "Auth");
         }
     }
-<<<<<<< Updated upstream
-=======
 
-
->>>>>>> Stashed changes
     public IActionResult CurrentCart()
     {
         // Check if the logged-in user ID is available in the session
