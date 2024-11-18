@@ -19,9 +19,9 @@ namespace ICTPRG535_556.Controllers
 
         public IActionResult Index()
         {
-            int listId = HttpContext.Session.GetInt32("ListId") ?? 0;
+            
             int userId = HttpContext.Session.GetInt32("UserId") ?? 0;
-
+            int listId = _dataAccess.GetCurrentListIdForUser(userId);
             var listName = HttpContext.Session.GetString("ListName") ?? "";
 
             // Pass user email and list name to the view
@@ -89,23 +89,23 @@ namespace ICTPRG535_556.Controllers
         public IActionResult AddToCart(int itemId)
         {
             // Retrieve the selected list ID from session
-            var listId = HttpContext.Session.GetInt32("ListId");
+           
             var userId = HttpContext.Session.GetInt32("UserId");
-
+            var listId = _dataAccess.GetCurrentListIdForUser(userId.Value);
             // Check if the selected list ID or user ID is null or invalid
-            if (!listId.HasValue || listId.Value <= 0 || !userId.HasValue || userId.Value <= 0)
+            if ( listId <= 0 || !userId.HasValue || userId.Value <= 0)
             {
                 // Handle the case where no list is selected or user is not logged in
                 return RedirectToAction("Index", "Home"); // Redirect to a suitable page
             }
 
             // Retrieve the list name from the database
-            var listName = _dataAccess.GetListNameById(listId.Value) ?? "";
+            var listName = _dataAccess.GetListNameById(listId) ?? "";
             var price = _dataAccess.GetProductPriceByItemId(itemId);
 
             var listDTO = new ListDTO
             {
-                ListID = listId.Value,
+                ListID = listId,
                 UserID = userId.Value,
                 ListName = listName,
                 ItemID = itemId,

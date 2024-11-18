@@ -13,9 +13,8 @@ namespace ICTPRG535_556
     {
         public static void Main(string[] args)
         {
-            DataAccess con = new DataAccess();
-            con.SetupDatabaseAndTables();
-            Console.Out.WriteLine(con.GetLists());
+            
+            
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -28,6 +27,10 @@ namespace ICTPRG535_556
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // Call SetupDatabaseAndTables when the application starts
+            var dataAccess = new DataAccess();
+            dataAccess.SetupDatabaseAndTables(); // Only once, ideally in a migration or initialization service
+
             services.AddSession(opts =>
             {
                 opts.IdleTimeout = TimeSpan.FromMinutes(30);
@@ -36,8 +39,8 @@ namespace ICTPRG535_556
             });
 
             services.AddControllersWithViews();
-
         }
+
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

@@ -90,12 +90,11 @@ public class CartController : BaseController
     {
         var unsavedLists = _dataAccess.FindUnsavedUserLists(userId);
         
-
     }
     // Creates a new list
     public IActionResult CreateNewList()
     {
-        var loggedInUserId = HttpContext.Session.GetInt32("UserId") ?? 0;
+        var loggedInUserId = HttpContext.Session.GetInt32("UserId")??0;
 
         // Check for unsaved lists
         var hasUnsavedList = _dataAccess
@@ -109,18 +108,19 @@ public class CartController : BaseController
 
         // Calculate new list ID
         var maxListId = _dataAccess.GetMaxListIdForUser(loggedInUserId);
-        int newListID = maxListId > 0 ? maxListId + 1 : 1;
-        /*
+        int newListID = maxListId > 0 ? maxListId : 1;
+        
         var newList = new ListDTO
         {
             UserID = loggedInUserId,
             ListID = newListID,
             ItemID = 0,
-            ListName = "Cart"
+            ListName = "Cart",
+            Quantity = 0
         };
 
         _dataAccess.AddList(newList);
-        */
+        
 
         HttpContext.Session.SetInt32("ListId", newListID);
 
@@ -228,7 +228,7 @@ public class CartController : BaseController
                             // Mark this item as added to prevent duplicates
                             addedItems.Add(itemKey);
                         }
-                        HttpContext.Session.SetInt32("ListId", listItem.ListID);
+                        //HttpContext.Session.SetInt32("ListId", listItem.ListID);
                     }
                 }
 

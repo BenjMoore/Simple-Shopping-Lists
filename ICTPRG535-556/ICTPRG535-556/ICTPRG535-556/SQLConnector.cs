@@ -241,16 +241,19 @@ namespace DataMapper
                 return maxListId + 1;
             }
         }
-
-
-        public ListDTO GetFirstListByID(int userID)
+        public int GetCurrentListIdForUser(int userId)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
             {
                 dbConnection.Open();
-                return dbConnection.QueryFirstOrDefault<ListDTO>("SELECT ListID, UserID, ItemID FROM Lists WHERE UserID = @UserID", new { UserID = userID });
+                int maxListId = dbConnection.QuerySingleOrDefault<int>(
+                    "SELECT ISNULL(MAX(ListID), 0) FROM Lists WHERE UserID = @UserId",
+                    new { UserId = userId }
+                );
+                return maxListId;
             }
         }
+
         public List<ListDTO> GetListById(int userID)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -434,7 +437,7 @@ namespace DataMapper
             {
                 dbConnection.Open();
                 // Insert a new list for the user
-                dbConnection.Execute("INSERT INTO Lists (UserID,ItemID,ListID,ListName,Price,Quantity) VALUES (@UserId,@ItemID,@ListName,@Price,@Quantity)", listDTO);
+                dbConnection.Execute("INSERT INTO Lists (UserID,ItemID,ListID,ListName,Price,Quantity) VALUES (@UserId,@ItemID,@ListID,@ListName,@Price,@Quantity)", listDTO);
             }
         }
         public string GetListNameById(int listId)

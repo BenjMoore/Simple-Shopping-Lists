@@ -47,7 +47,6 @@
         </script>
 
         <div class="text-center mb-4">
-            <a href="/Cart/CreateNewList?id=@loggedInUserId" class="btn btn-primary mx-2">New List</a>
             <a href="/Cart/Select" class="btn btn-primary mx-2">Select / Delete List</a>
             <a href="/" class="btn btn-primary mx-2">Add Item</a>
         </div>
@@ -92,7 +91,7 @@
 
                     <!-- Checkout Button -->
                     <div class="text-center mt-4">
-                        <a href="@Url.Action("CreateNewList", "Cart", new { listID = ViewBag.ListID })" class="btn btn-primary mx-2">New List</a>
+                        <a href="@Url.Action("CreateNewList", "Cart", new { listID = ViewBag.ListID })" class="btn btn-primary mx-2">Checkout / Save List</a>
                     </div>
                 }
                 else
