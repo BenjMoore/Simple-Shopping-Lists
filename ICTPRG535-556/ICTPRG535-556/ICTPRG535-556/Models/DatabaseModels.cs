@@ -17,6 +17,7 @@
         public string? Unit { get; set; } 
         public int ItemID { get; set; }
         public int Quantity { get; set; }
+        public DateTime? Date { get; set; }
         public decimal Price { get; set; }
         public DateTime? FinalisedDate { get; set; }
         public int ListIndex { get; set; }

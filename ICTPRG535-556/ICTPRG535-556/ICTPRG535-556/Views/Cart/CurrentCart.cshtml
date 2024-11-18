@@ -13,6 +13,7 @@
         @model List<SessionCartDTO>
         @{
             var loggedInUserId = ViewBag.LoggedInUserId as int?;
+            var totalPrice = ViewData["TotalPrice"] ?? 0;
         }
 
         <script>
@@ -86,7 +87,12 @@
                         </tbody>
                     </table>
                     <div class="text-right font-weight-bold mt-3">
-                        Total Price: $@(ViewData["TotalPrice"] ?? 0)
+                        Total Price: $@totalPrice
+                    </div>
+
+                    <!-- Checkout Button -->
+                    <div class="text-center mt-4">
+                        <a href="@Url.Action("CreateNewList", "Cart", new { listID = ViewBag.ListID })" class="btn btn-primary mx-2">New List</a>
                     </div>
                 }
                 else

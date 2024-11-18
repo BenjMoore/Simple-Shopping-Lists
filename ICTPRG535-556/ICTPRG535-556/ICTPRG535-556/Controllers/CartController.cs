@@ -89,10 +89,11 @@ public class CartController : BaseController
     public void SaveAllLists(int userId) 
     {
         var unsavedLists = _dataAccess.FindUnsavedUserLists(userId);
+        
 
     }
     // Creates a new list
-    public IActionResult CreateNewList(int listID)
+    public IActionResult CreateNewList()
     {
         var loggedInUserId = HttpContext.Session.GetInt32("UserId") ?? 0;
 
@@ -104,21 +105,23 @@ public class CartController : BaseController
         if (hasUnsavedList)
         {
             SaveAllLists(loggedInUserId);
-            return View(); // Show the current view with the save modal
         }
 
         // Calculate new list ID
         var maxListId = _dataAccess.GetMaxListIdForUser(loggedInUserId);
         int newListID = maxListId > 0 ? maxListId + 1 : 1;
-
+        /*
         var newList = new ListDTO
         {
             UserID = loggedInUserId,
             ListID = newListID,
             ItemID = 0,
+            ListName = "Cart"
         };
 
         _dataAccess.AddList(newList);
+        */
+
         HttpContext.Session.SetInt32("ListId", newListID);
 
         return RedirectToAction("SelectList", "Cart");
@@ -166,7 +169,6 @@ public class CartController : BaseController
         // Check if the logged-in user ID is available in the session
         if (HttpContext.Session.GetInt32("UserId").HasValue)
         {
-            // Retrieve the logged-in user ID from the session
             int loggedInUserId = HttpContext.Session.GetInt32("UserId").Value;
 
             // Retrieve all unfinalized lists for the logged-in user
@@ -176,6 +178,9 @@ public class CartController : BaseController
 
             // List to hold cart items for the current unfinalized lists
             List<SessionCartDTO> cartItems = new List<SessionCartDTO>();
+
+            // HashSet to track items already added based on ItemID and ListID
+            HashSet<string> addedItems = new HashSet<string>();
 
             // Dictionary to hold total prices for each unfinalized list
             Dictionary<int, decimal> listTotalPrices = new Dictionary<int, decimal>();
@@ -192,7 +197,6 @@ public class CartController : BaseController
                 // Iterate through the list items to create cart items
                 foreach (var listItem in listItems)
                 {
-                    // Retrieve products for the current list item
                     var userProducts = _dataAccess.GetUserListProducts(listItem.ItemID);
 
                     foreach (var product in userProducts)
@@ -200,18 +204,31 @@ public class CartController : BaseController
                         int? nullableQuantity = _dataAccess.GetItemQuantityInList(list.ListID, product.ItemID);
                         int quantity = nullableQuantity ?? 1;
 
-                        // Create a new SessionCartDTO and add it to the list
-                        var cartItem = new SessionCartDTO
-                        {
-                            ItemID = product.ItemID,
-                            Name = _dataAccess.GetProductName(product.ItemID),
-                            Price = Convert.ToString(_dataAccess.GetProductPriceByItemId(product.ItemID)),
-                            Unit = _dataAccess.GetProductWeight(product.ItemID),
-                            ListID = list.ListID,
-                            Quantity = quantity
-                        };
+                        // Generate a unique key for this cart item based on ItemID and ListID
+                        string itemKey = $"{product.ItemID}_{list.ListID}";
 
-                        cartItems.Add(cartItem);
+                        // Check if this item has already been added to the cart
+                        if (!addedItems.Contains(itemKey))
+                        {
+                            // Create a new SessionCartDTO and add it to the list
+                            var cartItem = new SessionCartDTO
+                            {
+                                ItemID = product.ItemID,
+                                Name = _dataAccess.GetProductName(product.ItemID),
+                                Price = Convert.ToString(_dataAccess.GetProductPriceByItemId(product.ItemID)),
+                                Unit = _dataAccess.GetProductWeight(product.ItemID),
+                                ListID = list.ListID,
+                                Quantity = quantity,
+                                DateCreated = _dataAccess.GetListCreated(list.ListID)
+                            };
+
+                            // Add the cart item to the cartItems list
+                            cartItems.Add(cartItem);
+
+                            // Mark this item as added to prevent duplicates
+                            addedItems.Add(itemKey);
+                        }
+                        HttpContext.Session.SetInt32("ListId", listItem.ListID);
                     }
                 }
 
@@ -234,6 +251,7 @@ public class CartController : BaseController
             return RedirectToAction("Login", "Auth");
         }
     }
+
 
 
 
@@ -276,7 +294,8 @@ public class CartController : BaseController
                         Price = Convert.ToString(_dataAccess.GetProductPriceByItemId(product.ItemID)),
                         Unit = _dataAccess.GetProductWeight(product.ItemID),
                         ListID = listId,
-                        Quantity = quantity
+                        Quantity = quantity,
+                        DateCreated = _dataAccess.GetListCreated(listId)
 
                     };
 

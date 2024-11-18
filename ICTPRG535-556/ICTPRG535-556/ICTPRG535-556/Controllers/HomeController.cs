@@ -109,7 +109,8 @@ namespace ICTPRG535_556.Controllers
                 UserID = userId.Value,
                 ListName = listName,
                 ItemID = itemId,
-                Price = price
+                Price = price,
+                Quantity = 1
             };
 
             // Call the AddList method with the constructed listDTO object

@@ -12,6 +12,7 @@
         public int Quantity { get; set; }
         public string ListName { get; set; }
         public DateTime? FinalisedDate { get; set; }
+        public DateTime? DateCreated { get; set; }
         public List<ProduceDTO> ProduceItems { get; set; }
     }
 }

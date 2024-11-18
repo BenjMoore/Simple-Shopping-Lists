@@ -103,8 +103,8 @@ namespace DataMapper
             -- Check if the Lists table is empty
             IF NOT EXISTS (SELECT 1 FROM Lists)
             BEGIN
-                INSERT INTO Lists (ListID, UserID, ItemID, ListName, ListIndex, Quantity, Price, Date) VALUES 
-                (1, 1, 1, 'Example List', 1, 2, 11.00, GETDATE());
+                INSERT INTO Lists (UserID, ItemID,ListID, ListName, Quantity, Price, Date) VALUES 
+                (1, 1,1, 'Example List', 2, 11.00, GETDATE());
                 
             END;
 
@@ -363,25 +363,7 @@ namespace DataMapper
             }
         }
 
-        // Post method for ListDTO
-        public void PostList(ListDTO list)
-        {
-            using (IDbConnection dbConnection = new SqlConnection(connectionString))
-            {
-                dbConnection.Open();
-                dbConnection.Execute("INSERT INTO Lists (UserID, ItemID) VALUES (@UserID, @ItemID)", list);
-            }
-        }
-
-        // Post method for ProduceDTO
-        public void PostProduce(ProduceDTO produce)
-        {
-            using (IDbConnection dbConnection = new SqlConnection(connectionString))
-            {
-                dbConnection.Open();
-                dbConnection.Execute("INSERT INTO Produce (Name, Unit, Price) VALUES (@Name, @Unit, @Price)", produce);
-            }
-        }
+  
         #endregion
     #region DELETE
         // Delete method for UserDTO
@@ -452,7 +434,7 @@ namespace DataMapper
             {
                 dbConnection.Open();
                 // Insert a new list for the user
-                dbConnection.Execute("INSERT INTO Lists (UserID,ListID,ItemID,ListName,Price) VALUES (@UserId,@ListID,@ItemID,@ListName,@Price)", listDTO);
+                dbConnection.Execute("INSERT INTO Lists (UserID,ItemID,ListID,ListName,Price,Quantity) VALUES (@UserId,@ItemID,@ListName,@Price,@Quantity)", listDTO);
             }
         }
         public string GetListNameById(int listId)
@@ -463,6 +445,19 @@ namespace DataMapper
                 return dbConnection.QueryFirstOrDefault<string>("SELECT ListName FROM Lists WHERE ListID = @ListId", new { ListId = listId });
             }
         }
+        public DateTime? GetListCreated(int listId)
+        {
+            using (IDbConnection dbConnection = new SqlConnection(connectionString))
+            {
+                dbConnection.Open();
+                // Query the Date column from the Lists table
+                return dbConnection.QueryFirstOrDefault<DateTime?>(
+                    "SELECT Date FROM Lists WHERE ListID = @ListId",
+                    new { ListId = listId }
+                );
+            }
+        }
+
         public void UpdateItemQuantity(int listId, int itemId, int additionalQuantity)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -512,7 +507,7 @@ namespace DataMapper
             {
                 dbConnection.Open();
                 return dbConnection.Query<ListDTO>(
-                    "SELECT ListID, ListName, UserID, FinalisedDate FROM Lists WHERE UserID = @UserId",
+                    "SELECT ListID, ListName, UserID, FinalisedDate, ItemID,Price,Quantity FROM Lists WHERE UserID = @UserId",
                     new { UserId = userId });
             }
         }
