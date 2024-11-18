@@ -1,5 +1,7 @@
 ﻿using DataMapper;
 using ICTPRG535_556.Controllers;
+using ICTPRG535_556.Encrypt;
+using ICTPRG535_556.Models;
 using Microsoft.AspNetCore.Mvc;
 
 public class AuthController : BaseController
@@ -26,12 +28,17 @@ public class AuthController : BaseController
 
     [HttpPost]
     [Route("Login")]
-    public IActionResult ProcessLogin(string email)
+    public IActionResult ProcessLogin(string email, string password)
     {
         // Check if email is provided
         if (string.IsNullOrEmpty(email))
         {
             ViewBag.Error = "Email is required";
+            return View("Login");
+        }
+        if (string.IsNullOrEmpty(password))
+        {
+            ViewBag.Error = "Password is required";
             return View("Login");
         }
 
@@ -41,7 +48,14 @@ public class AuthController : BaseController
         // Check if user exists
         if (user == null)
         {
-            ViewBag.Error = "Invalid email";
+            ViewBag.Error = "Invalid email or password.";
+            return View("Login");
+        }
+
+        // Verify the password using bcrypt
+        if (!PasswordUtility.VerifyPassword(password, user.Password))
+        {
+            ViewBag.Error = "Invalid email or password.";
             return View("Login");
         }
 
@@ -50,6 +64,57 @@ public class AuthController : BaseController
 
         // Redirect to the user's cart page with the userID
         return RedirectToAction("UserCart", "Cart", new { id = user.UserID });
+    }
+    [HttpGet]
+    [Route("CreateAccount")]
+    public IActionResult CreateAccount()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    [Route("CreateAccount")]
+    public IActionResult ProcessCreateAccount(string email, string password, string confirmPassword)
+    {
+        // Check if email or password is provided
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword))
+        {
+            ViewBag.Error = "All fields are required";
+            return View("CreateAccount");
+        }
+
+        // Check if password and confirm password match
+        if (password != confirmPassword)
+        {
+            ViewBag.Error = "Passwords do not match";
+            return View("CreateAccount");
+        }
+
+        // Check if the email is already in use
+        var existingUser = _dataAccess.GetUserByEmail(email);
+        if (existingUser != null)
+        {
+            ViewBag.Error = "Email is already in use";
+            return View("CreateAccount");
+        }
+
+        // Hash the password before saving it
+        var hashedPassword = PasswordUtility.HashPassword(password);
+        
+        // Create a new user
+        var newUser = new UserDTO
+        {
+            Email = email,
+            Password = hashedPassword,
+            Lists = 0
+        };
+
+        // Save the new user in the database
+        _dataAccess.SetUser(newUser);
+
+        // Redirect to login page after successful account creation
+        ViewBag.Success = "Account created successfully! Please login.";
+        return RedirectToAction("Login");
     }
     public int GetUserId()
     {

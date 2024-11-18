@@ -4,6 +4,7 @@
     {
         public int UserID { get; set; }
         public string Email { get; set; }
+        public string Password { get; set; }
         public int Lists { get; set; }
 
     }
@@ -13,6 +14,7 @@
         public int ListID { get; set; }
         public string ListName { get; set; }
         public int UserID { get; set; }
+        public string? Unit { get; set; } 
         public int ItemID { get; set; }
         public int Quantity { get; set; }
         public decimal Price { get; set; }
@@ -31,6 +33,7 @@
         public string Name { get; set; }
         public string Unit { get; set; }
         public decimal Price { get; set; }
+        public int? Quantity { get; set; }
 
     }
 

@@ -1,10 +1,10 @@
 ﻿@model ICTPRG535_556.Models.UserDTO
 
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Create Account";
 }
 
-<h1>Login</h1>
+<h1>Create Account</h1>
 
 @if (ViewBag.Error != null)
 {
@@ -18,7 +18,7 @@
 <div class="row">
     <img src="/img/logo.png" style="width: 150px; height: 150px;" />
     <div class="col-md-4">
-        <form method="post" action="Login">
+        <form method="post" action="CreateAccount">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <!-- Email Field -->
@@ -36,19 +36,18 @@
             </div>
             <br />
 
+            <!-- Confirm Password Field -->
+            <div class="form-group">
+                <label for="ConfirmPassword" class="control-label">Confirm Password</label>
+                <input type="password" id="ConfirmPassword" name="confirmPassword" class="form-control" />
+            </div>
+            <br />
+
             <!-- Submit and Back Buttons -->
             <div class="form-group">
-                <input type="submit" value="Login" class="btn btn-primary" />
+                <input type="submit" value="Create Account" class="btn btn-primary" />
                 <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back to List</a>
             </div>
-
-            <!-- Create Account Button -->
-            <div class="form-group mt-3">
-                <a asp-controller="Auth" asp-action="CreateAccount" class="btn btn-success">Create Account</a>
-            </div>
-
-            User: newuser@example.com<br />
-            Password: Test
         </form>
     </div>
 </div>

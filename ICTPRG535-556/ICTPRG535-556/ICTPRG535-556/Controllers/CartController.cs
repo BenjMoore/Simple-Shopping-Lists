@@ -85,22 +85,47 @@ public class CartController : BaseController
             return RedirectToAction("Login", "Auth");
         }
     }
+
+    public void SaveAllLists(int userId) 
+    {
+        var unsavedLists = _dataAccess.FindUnsavedUserLists(userId);
+
+    }
     // Creates a new list
     public IActionResult CreateNewList(int listID)
     {
         var loggedInUserId = HttpContext.Session.GetInt32("UserId") ?? 0;
-        var maxlistid = _dataAccess.GetMaxListIdForUser(Convert.ToInt32(loggedInUserId));
-        int newListID = Convert.ToInt32(maxlistid) + 1;
+
+        // Check for unsaved lists
+        var hasUnsavedList = _dataAccess
+            .GetAllUserListsFinalised(loggedInUserId)
+            .Any(list => list.FinalisedDate == null);
+
+        if (hasUnsavedList)
+        {
+            SaveAllLists(loggedInUserId);
+            return View(); // Show the current view with the save modal
+        }
+
+        // Calculate new list ID
+        var maxListId = _dataAccess.GetMaxListIdForUser(loggedInUserId);
+        int newListID = maxListId > 0 ? maxListId + 1 : 1;
+
         var newList = new ListDTO
         {
             UserID = loggedInUserId,
             ListID = newListID,
-            ItemID = 0
+            ItemID = 0,
         };
+
         _dataAccess.AddList(newList);
         HttpContext.Session.SetInt32("ListId", newListID);
+
         return RedirectToAction("SelectList", "Cart");
     }
+
+
+    // List History
     public IActionResult Select()
     {
         // Check if the logged-in user ID is available in the session
@@ -135,6 +160,11 @@ public class CartController : BaseController
             return RedirectToAction("Login", "Auth");
         }
     }
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
     public IActionResult CurrentCart()
     {
         // Check if the logged-in user ID is available in the session

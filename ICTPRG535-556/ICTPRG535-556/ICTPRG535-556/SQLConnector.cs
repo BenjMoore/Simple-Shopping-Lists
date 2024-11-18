@@ -6,7 +6,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using NuGet.Protocol.Plugins;
-
+using ICTPRG535_556.Encrypt;
 namespace DataMapper
 {
     public class DataAccess
@@ -68,14 +68,16 @@ namespace DataMapper
 
                     // Create the Users table if it does not exist.
                     string createTableUsersQuery = @"
-            IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = N'Users')
-            BEGIN
-                CREATE TABLE Users (
-                    UserID INT NOT NULL PRIMARY KEY,
-                    Email NCHAR(50) NOT NULL,
-                    Lists INT NOT NULL
-                );
-            END;";
+                    IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = N'Users')
+                    BEGIN
+                        CREATE TABLE Users (
+                            UserID INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
+                            Email NCHAR(50) NOT NULL,
+                            Password VARCHAR(200) NOT NULL,
+                            Lists INT NOT NULL
+                        );
+                    END;
+                    ";
                     SqlCommand createTableUsersCommand = new SqlCommand(createTableUsersQuery, connection);
                     createTableUsersCommand.ExecuteNonQuery();
 
@@ -92,9 +94,10 @@ namespace DataMapper
             END;";
                     SqlCommand createTableProduceCommand = new SqlCommand(createTableProduceQuery, connection);
                     createTableProduceCommand.ExecuteNonQuery();
-
                     // Populate the tables if they are empty.
-                    string checkAndPopulateTablesQuery = @"
+                    string plainPassword = "Test";
+                    string hashedPassword = PasswordUtility.HashPassword(plainPassword);
+                    string checkAndPopulateTablesQuery = $@"
             USE ShoppingList;
 
             -- Check if the Lists table is empty
@@ -108,8 +111,8 @@ namespace DataMapper
             -- Check if the Users table is empty
             IF NOT EXISTS (SELECT 1 FROM Users)
             BEGIN
-                INSERT INTO Users (UserID, Email, Lists) VALUES 
-                (1, 'newuser@example.com', 0);
+                INSERT INTO Users (Email, Password, Lists) VALUES 
+                ('newuser@example.com','{hashedPassword}', 0);
             END;
 
             -- Check if the Produce table is empty
@@ -182,7 +185,7 @@ namespace DataMapper
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
             {
                 dbConnection.Open();
-                var result = dbConnection.Query<UserDTO>("SELECT UserID, Email FROM Users");
+                var result = dbConnection.Query<UserDTO>("SELECT UserID, Email, Password FROM Users");
                 foreach (var user in result)
                 {
                     users.Add(user);
@@ -196,17 +199,18 @@ namespace DataMapper
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
             {
                 dbConnection.Open();
-                return dbConnection.QueryFirstOrDefault<UserDTO>("SELECT UserID, Email,Lists FROM Users WHERE UserID = @UserID", new { UserID = userId });
+                return dbConnection.QueryFirstOrDefault<UserDTO>("SELECT UserID, Email,Password,Lists FROM Users WHERE UserID = @UserID", new { UserID = userId });
             }
         }
 
         [HttpPost]
         public UserDTO GetUserByEmail(string email)
         {
+            string cleanedEmail = email.Trim();
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
             {
                 dbConnection.Open();
-                return dbConnection.QueryFirstOrDefault<UserDTO>("SELECT UserID, Email, Lists FROM Users WHERE Email = @Email", new { Email = email });
+                return dbConnection.QueryFirstOrDefault<UserDTO>("SELECT UserID, Email, Password ,Lists FROM Users WHERE Email = @Email", new { Email = cleanedEmail });
             }
         }
         public ArrayList GetLists()
@@ -291,7 +295,7 @@ namespace DataMapper
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
             {
                 dbConnection.Open();
-                dbConnection.Execute("INSERT INTO Users (UserID, Email) VALUES (@UserID, @Email)", user);
+                dbConnection.Execute("INSERT INTO Users (Email,Lists,Password) VALUES (@Email,@Lists,@Password)", user);
             }
         }
 
@@ -323,7 +327,7 @@ namespace DataMapper
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
             {
                 dbConnection.Open();
-                dbConnection.Execute("UPDATE Users SET Email = @Email, Lists = @Lists WHERE UserID = @UserID", user);
+                dbConnection.Execute("UPDATE Users SET Email = @Email, Lists = @Lists, Password = @Password WHERE UserID = @UserID", user);
             }
         }
 
@@ -512,6 +516,34 @@ namespace DataMapper
                     new { UserId = userId });
             }
         }
+        public IEnumerable<ListDTO> FindUnsavedUserLists(int userId)
+        {
+            using (IDbConnection dbConnection = new SqlConnection(connectionString))
+            {
+                dbConnection.Open();
+
+                // Retrieve all unfinalized lists for the user
+                var unfinalizedLists = dbConnection.Query<ListDTO>(
+                    "SELECT ListID, ListName, UserID, FinalisedDate FROM Lists WHERE UserID = @UserId AND FinalisedDate IS NULL",
+                    new { UserId = userId }).ToList();
+
+                // If there are any unfinalized lists, update their FinalisedDate
+                if (unfinalizedLists.Any())
+                {
+                    // Update the FinalisedDate to current date for all unfinalized lists
+                    var now = DateTime.Now;
+                    var listIds = unfinalizedLists.Select(list => list.ListID).ToArray();
+
+                    dbConnection.Execute(
+                        "UPDATE Lists SET FinalisedDate = @Now WHERE ListID IN @ListIds",
+                        new { Now = now, ListIds = listIds });
+                }
+
+                return unfinalizedLists;
+            }
+        }
+
+
 
         public IEnumerable<ProduceDTO> GetUserListProducts(int itemID)
         {
