@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Current Cart</title>
+    <title>@ViewData["Title"] Shopping..</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ICTPRG535_556.styles.css" asp-append-version="true" />
@@ -31,33 +31,38 @@
                 });
             }
 
-            function deleteProduce(itemId, listId, userId) {
+            function deleteProduce(itemId, listId) {
                 $.ajax({
                     url: '@Url.Action("DeleteProduce", "Cart")',
                     type: 'POST',
-                    data: { itemId, listId, userId },
+                    data: { itemId: itemId },
                     success: function () {
-                        location.reload();
+                        location.reload(); // Refresh the page after deletion
                     },
                     error: function (xhr) {
-                        console.error(xhr.responseText);
+                        console.error(xhr.responseText); // Log any errors
                     }
                 });
             }
+
         </script>
 
-        <div class="text-center mb-4">
+        <div class="text-center">
+            <h2 class="my-4">Shopping Options</h2>
+            <a href="/Cart/CurrentCart" class="btn btn-primary mx-2">Current Cart</a>
             <a href="/Cart/Select" class="btn btn-primary mx-2">Select / Delete List</a>
             <a href="/" class="btn btn-primary mx-2">Add Item</a>
         </div>
+    </div>
 
+    <div class="container mt-4">
         <main role="main" class="pb-3">
             <section>
                 <h2 class="text-center mb-4">Current Cart</h2>
                 @if (Model != null && Model.Any())
                 {
                     <table class="table table-bordered table-striped">
-                        <thead class="thead-dark">
+                        <thead style="background-color: #007bff; color: white;">
                             <tr>
                                 <th>Item Name</th>
                                 <th>Quantity</th>
@@ -79,19 +84,19 @@
                                     <td>@item.Unit</td>
                                     <td>$@item.Price</td>
                                     <td>
-                                        <button class="btn btn-primary btn-sm" onclick="deleteProduce(@item.ItemID, @item.ListID, @loggedInUserId)">Delete</button>
+                                        <button class="btn btn-danger btn-sm" onclick="deleteProduce(@item.ItemID)">Delete</button>
                                     </td>
                                 </tr>
                             }
                         </tbody>
                     </table>
                     <div class="text-right font-weight-bold mt-3">
-                        Total Price: $@totalPrice
+                        Total Price: $@ViewBag.GrandTotal
                     </div>
 
                     <!-- Checkout Button -->
                     <div class="text-center mt-4">
-                        <a href="@Url.Action("CreateNewList", "Cart", new { listID = ViewBag.ListID })" class="btn btn-primary mx-2">Checkout / Save List</a>
+                        <a href="@Url.Action("Checkout", "Cart")" class="btn btn-primary mx-2">Checkout / Save List</a>
                     </div>
                 }
                 else

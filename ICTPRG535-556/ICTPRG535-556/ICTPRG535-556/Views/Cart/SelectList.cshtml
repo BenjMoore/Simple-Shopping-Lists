@@ -76,6 +76,7 @@
                             <th>Quantity</th>
                             <th>Unit</th>
                             <th>Price</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,11 +84,17 @@
                         {
                             <tr>
                                 <td>@item.Name</td>
+                                
                                 <td>
-                                    @item.Quantity
+                                <button class="btn btn-primary btn-sm" onclick="updateQuantity(@item.ItemID, @item.ListID, -1)">-</button>
+                                @item.Quantity
+                                <button class="btn btn-primary btn-sm" onclick="updateQuantity(@item.ItemID, @item.ListID, 1)">+</button>
                                 </td>
                                 <td>@item.Unit</td>
-                                <td>$@item.Price </td>
+                                <td>$@item.Price</td>                
+                                <td>
+                                    <button class="btn btn-danger btn-sm" onclick="deleteProduce(@item.ItemID)">Delete</button>
+                                </td>                                
                             </tr>
                         }
                     </tbody>

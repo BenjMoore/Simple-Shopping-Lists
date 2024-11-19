@@ -22,7 +22,7 @@ namespace DataMapper
 
         }
 
-        #region Initialise Database
+    #region Initialise Database
 
 
         public void SetupDatabaseAndTables()
@@ -56,7 +56,6 @@ namespace DataMapper
                     UserID INT NOT NULL,
                     ItemID INT NOT NULL,
                     ListName NCHAR(50),
-                    ListIndex INT,
                     Quantity INT,
                     Price FLOAT,
                     FinalisedDate DATETIME,
@@ -104,8 +103,7 @@ namespace DataMapper
             IF NOT EXISTS (SELECT 1 FROM Lists)
             BEGIN
                 INSERT INTO Lists (UserID, ItemID,ListID, ListName, Quantity, Price, Date) VALUES 
-                (1, 1,1, 'Example List', 2, 11.00, GETDATE());
-                
+                (1, 0,1, 'Cart', 0, 11.00, GETDATE());     
             END;
 
             -- Check if the Users table is empty
@@ -177,23 +175,8 @@ namespace DataMapper
 
 
         #endregion
-        #region GET
-        public ArrayList GetUsers()
-        {
-            ArrayList users = new ArrayList();
-
-            using (IDbConnection dbConnection = new SqlConnection(connectionString))
-            {
-                dbConnection.Open();
-                var result = dbConnection.Query<UserDTO>("SELECT UserID, Email, Password FROM Users");
-                foreach (var user in result)
-                {
-                    users.Add(user);
-                }
-            }
-
-            return users;
-        }
+    #region GET
+       
         public UserDTO GetUserById(int userId)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -202,7 +185,6 @@ namespace DataMapper
                 return dbConnection.QueryFirstOrDefault<UserDTO>("SELECT UserID, Email,Password,Lists FROM Users WHERE UserID = @UserID", new { UserID = userId });
             }
         }
-
         [HttpPost]
         public UserDTO GetUserByEmail(string email)
         {
@@ -212,23 +194,7 @@ namespace DataMapper
                 dbConnection.Open();
                 return dbConnection.QueryFirstOrDefault<UserDTO>("SELECT UserID, Email, Password ,Lists FROM Users WHERE Email = @Email", new { Email = cleanedEmail });
             }
-        }
-        public ArrayList GetLists()
-        {
-            ArrayList lists = new ArrayList();
-
-            using (IDbConnection dbConnection = new SqlConnection(connectionString))
-            {
-                dbConnection.Open();
-                var result = dbConnection.Query<ListDTO>("SELECT ListID, UserID, ItemID, ListName, Quantity FROM Lists");
-                foreach (var list in result)
-                {
-                    lists.Add(list);
-                }
-            }
-
-            return lists;
-        }
+        }     
         public int GetMaxListIdForUser(int userId)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -237,6 +203,18 @@ namespace DataMapper
                 int maxListId = dbConnection.QuerySingleOrDefault<int>(
                     "SELECT ISNULL(MAX(ListID), 0) FROM Lists WHERE UserID = @UserId",
                     new { UserId = userId }
+                );
+                return maxListId + 1;
+            }
+        }
+        public int GetNewListIdForAll()
+        {
+            using (IDbConnection dbConnection = new SqlConnection(connectionString))
+            {
+                dbConnection.Open();
+                int maxListId = dbConnection.QuerySingleOrDefault<int>(
+                    "SELECT ISNULL(MAX(ListID), 0) FROM Lists"
+                    
                 );
                 return maxListId + 1;
             }
@@ -253,16 +231,41 @@ namespace DataMapper
                 return maxListId;
             }
         }
-
+        public int GetMaxUserId()
+        {
+            using (IDbConnection dbConnection = new SqlConnection(connectionString))
+            {
+                dbConnection.Open();
+                int maxUserId = dbConnection.QuerySingleOrDefault<int>(
+                    "SELECT ISNULL(MAX(UserID), 0) FROM Users"
+                );
+                return maxUserId;
+            }
+        }
         public List<ListDTO> GetListById(int userID)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
             {
                 dbConnection.Open();
-                return dbConnection.Query<ListDTO>("SELECT ListID, UserID, ItemID FROM Lists WHERE UserID = @UserID", new { UserID = userID }).ToList();
+                return dbConnection.Query<ListDTO>("SELECT ListID, UserID, ItemID, FinalisedDate FROM Lists WHERE UserID = @UserID", new { UserID = userID }).ToList();
             }
         }
+        public bool HasListsWithoutFinalisedDate(int userID)
+        {
+            using (IDbConnection dbConnection = new SqlConnection(connectionString))
+            {
+                dbConnection.Open();
 
+                // Query to check if there are any lists without a FinalisedDate for the given user
+                var result = dbConnection.QuerySingleOrDefault<int>(
+                    "SELECT COUNT(*) FROM Lists WHERE UserID = @UserID AND FinalisedDate IS NULL",
+                    new { UserID = userID }
+                );
+
+                // If result is greater than 0, that means there are lists without a FinalisedDate, so return false
+                return result == 0;
+            }
+        }
         public List<ProduceDTO> GetProduceByItemName(string itemName)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
@@ -272,7 +275,6 @@ namespace DataMapper
                 return dbConnection.Query<ProduceDTO>(query, new { Name = "%" + itemName + "%" }).ToList();
             }
         }
-
         public List<ProduceDTO> GetProduce()
         {
             List<ProduceDTO> produce = new List<ProduceDTO>();
@@ -416,6 +418,17 @@ namespace DataMapper
                       FROM Lists
                       WHERE UserID = @UserId";
                 return dbConnection.Query<int>(query, new { UserId = userId }).Take(1);
+            }
+        }
+        public List<ListDTO> GetUserListsDTO(int userId)
+        {
+            using (IDbConnection dbConnection = new SqlConnection(connectionString))
+            {
+                dbConnection.Open();
+                var query = @"SELECT ListID, UserID, FinalisedDate, ListName 
+                      FROM Lists 
+                      WHERE UserID = @UserId"; // Ensure it filters by UserID
+                return dbConnection.Query<ListDTO>(query, new { UserId = userId }).ToList();
             }
         }
 

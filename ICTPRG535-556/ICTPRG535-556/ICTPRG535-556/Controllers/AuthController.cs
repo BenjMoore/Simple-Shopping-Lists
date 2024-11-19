@@ -25,6 +25,37 @@ public class AuthController : BaseController
         }
         return View();
     }
+  
+    public IActionResult CreateNewList(int userID)
+    {
+        var loggedInUserId = userID;
+
+        // Check for unsaved lists
+        var hasUnsavedList = _dataAccess
+            .GetAllUserListsFinalised(loggedInUserId)
+            .Any(list => list.FinalisedDate == null);
+
+        // Calculate new list ID
+        var maxListId = _dataAccess.GetNewListIdForAll();
+        int newListID = maxListId > 0 ? maxListId : 1;
+
+        var newList = new ListDTO
+        {
+            UserID = loggedInUserId,
+            ListID = newListID,
+            ItemID = 0,
+            ListName = "Cart",
+            Quantity = 0
+        };
+
+        _dataAccess.AddList(newList);
+
+
+        HttpContext.Session.SetInt32("ListId", newListID);
+
+        return RedirectToAction("SelectList", "Cart");
+    }
+
 
     [HttpPost]
     [Route("Login")]
@@ -61,9 +92,13 @@ public class AuthController : BaseController
 
         // Store the user's ID in the session
         HttpContext.Session.SetInt32("UserId", user.UserID);
-
+        bool flag = _dataAccess.HasListsWithoutFinalisedDate(user.UserID);
+        if (flag == true) 
+        {
+            CreateNewList(user.UserID);
+        }
         // Redirect to the user's cart page with the userID
-        return RedirectToAction("UserCart", "Cart", new { id = user.UserID });
+        return RedirectToAction("CurrentCart", "Cart");
     }
     [HttpGet]
     [Route("CreateAccount")]
@@ -111,7 +146,8 @@ public class AuthController : BaseController
 
         // Save the new user in the database
         _dataAccess.SetUser(newUser);
-
+        int userid = _dataAccess.GetMaxUserId();
+        CreateNewList(userid);
         // Redirect to login page after successful account creation
         ViewBag.Success = "Account created successfully! Please login.";
         return RedirectToAction("Login");

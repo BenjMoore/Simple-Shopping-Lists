@@ -86,28 +86,16 @@ public class CartController : BaseController
         }
     }
 
-    public void SaveAllLists(int userId) 
-    {
-        var unsavedLists = _dataAccess.FindUnsavedUserLists(userId);
-        
-    }
+    
+
     // Creates a new list
+    
     public IActionResult CreateNewList()
     {
         var loggedInUserId = HttpContext.Session.GetInt32("UserId")??0;
 
-        // Check for unsaved lists
-        var hasUnsavedList = _dataAccess
-            .GetAllUserListsFinalised(loggedInUserId)
-            .Any(list => list.FinalisedDate == null);
-
-        if (hasUnsavedList)
-        {
-            SaveAllLists(loggedInUserId);
-        }
-
         // Calculate new list ID
-        var maxListId = _dataAccess.GetMaxListIdForUser(loggedInUserId);
+        var maxListId = _dataAccess.GetNewListIdForAll();
         int newListID = maxListId > 0 ? maxListId : 1;
         
         var newList = new ListDTO
@@ -116,7 +104,8 @@ public class CartController : BaseController
             ListID = newListID,
             ItemID = 0,
             ListName = "Cart",
-            Quantity = 0
+            Quantity = 0,
+            FinalisedDate = DateTime.Now
         };
 
         _dataAccess.AddList(newList);
@@ -126,9 +115,52 @@ public class CartController : BaseController
 
         return RedirectToAction("SelectList", "Cart");
     }
+    public IActionResult SaveExisitingList()
+    {
+        var loggedInUserId = HttpContext.Session.GetInt32("UserId") ?? 0;
+        HttpContext.Session.SetInt32("ExistingList",1);
+        // Calculate new list ID
+        var maxListId = _dataAccess.GetNewListIdForAll();
+        int newListID = maxListId > 0 ? maxListId : 1;
+
+        var newList = new ListDTO
+        {
+            UserID = loggedInUserId,
+            ListID = newListID,
+            ItemID = 0,
+            ListName = "Cart",
+            Quantity = 0,
+            FinalisedDate = DateTime.Now
+        };
+
+        _dataAccess.AddList(newList);
 
 
-    // List History
+        HttpContext.Session.SetInt32("ListId", newListID);
+
+        return RedirectToAction("SelectList", "Cart");
+    }
+    // This loads the select list page where you can select saved lists
+    public void SaveLists()
+    {
+        var loggedInUserId = HttpContext.Session.GetInt32("UserId") ?? 0;
+
+        // Check for unsaved lists
+        var hasUnsavedList = _dataAccess
+            .GetAllUserListsFinalised(loggedInUserId)
+            .Any(list => list.FinalisedDate == null);
+
+        if (hasUnsavedList)
+        {
+            _dataAccess.FindUnsavedUserLists(loggedInUserId);
+        }
+    }
+    public IActionResult Checkout()
+    {
+        SaveLists();
+        CreateNewList();
+        return RedirectToAction("SelectList", "Cart");
+    }
     public IActionResult Select()
     {
         // Check if the logged-in user ID is available in the session
@@ -164,37 +196,36 @@ public class CartController : BaseController
         }
     }
 
+    // this loads the current cart
+    
     public IActionResult CurrentCart()
     {
-        // Check if the logged-in user ID is available in the session
         if (HttpContext.Session.GetInt32("UserId").HasValue)
         {
+            HttpContext.Session.SetInt32("ExistingList",0);
+
             int loggedInUserId = HttpContext.Session.GetInt32("UserId").Value;
 
-            // Retrieve all unfinalized lists for the logged-in user
-            var userLists = _dataAccess.GetAllUserListsFinalised(loggedInUserId)
-                                          .Where(list => list.FinalisedDate == null)
-                                          .ToList();
+            // Get the most recent list ID for the logged-in user
+            var maxListID = _dataAccess.GetCurrentListIdForUser(loggedInUserId);
+            HttpContext.Session.SetInt32("ListId", maxListID);
 
-            // List to hold cart items for the current unfinalized lists
+            // Get lists for the logged-in user where FinalisedDate is null (not finalized)
+            var userLists = _dataAccess.GetUserListsDTO(loggedInUserId)  // Ensure lists are filtered by UserID
+                .Where(list => list.FinalisedDate == null)  // Only consider lists where FinalisedDate is NULL
+                .ToList();
+
             List<SessionCartDTO> cartItems = new List<SessionCartDTO>();
-
-            // HashSet to track items already added based on ItemID and ListID
             HashSet<string> addedItems = new HashSet<string>();
-
-            // Dictionary to hold total prices for each unfinalized list
             Dictionary<int, decimal> listTotalPrices = new Dictionary<int, decimal>();
 
-            // Iterate through each unfinalized list
             foreach (var list in userLists)
             {
+                // Get items for each list
                 var listItems = _dataAccess.GetListItems(list.ListID);
-                decimal totalPrice = CalculateTotalPrice(listItems);
-
-                // Add the total price to the dictionary
+                decimal totalPrice = CalculateTotalPrice(listItems); // Calculate the total price of the list
                 listTotalPrices[list.ListID] = totalPrice;
 
-                // Iterate through the list items to create cart items
                 foreach (var listItem in listItems)
                 {
                     var userProducts = _dataAccess.GetUserListProducts(listItem.ItemID);
@@ -202,15 +233,12 @@ public class CartController : BaseController
                     foreach (var product in userProducts)
                     {
                         int? nullableQuantity = _dataAccess.GetItemQuantityInList(list.ListID, product.ItemID);
-                        int quantity = nullableQuantity ?? 1;
+                        int quantity = nullableQuantity ?? 1; // Default to 1 if quantity is null
 
-                        // Generate a unique key for this cart item based on ItemID and ListID
                         string itemKey = $"{product.ItemID}_{list.ListID}";
 
-                        // Check if this item has already been added to the cart
-                        if (!addedItems.Contains(itemKey))
+                        if (!addedItems.Contains(itemKey))  // Avoid adding duplicate items
                         {
-                            // Create a new SessionCartDTO and add it to the list
                             var cartItem = new SessionCartDTO
                             {
                                 ItemID = product.ItemID,
@@ -222,40 +250,34 @@ public class CartController : BaseController
                                 DateCreated = _dataAccess.GetListCreated(list.ListID)
                             };
 
-                            // Add the cart item to the cartItems list
                             cartItems.Add(cartItem);
-
-                            // Mark this item as added to prevent duplicates
                             addedItems.Add(itemKey);
                         }
-                        //HttpContext.Session.SetInt32("ListId", listItem.ListID);
                     }
                 }
 
-                // Save the list name in the session (if available)
                 if (!string.IsNullOrEmpty(list.ListName))
                 {
                     HttpContext.Session.SetString("ListName", list.ListName);
                 }
             }
 
-            // Pass the total prices for the lists to the view
-            ViewBag.ListTotalPrices = listTotalPrices;
+            // Calculate the grand total of all lists
+            decimal grandTotal = listTotalPrices.Values.Sum();
 
-            // Return the view with the cart items for the unfinalized lists
-            return View(cartItems);
+            // Pass the grand total and list prices to the view
+            ViewBag.ListTotalPrices = listTotalPrices;
+            ViewBag.GrandTotal = grandTotal;
+
+            return View(cartItems); // Pass the cart items to the view
         }
         else
         {
-            // User is not logged in, redirect to the login page
-            return RedirectToAction("Login", "Auth");
+            return RedirectToAction("Login", "Auth"); // Redirect to login if not logged in
         }
     }
 
-
-
-
-
+    
     public IActionResult SelectList(int listId)
     {
         // Check if the user is logged in
@@ -263,8 +285,11 @@ public class CartController : BaseController
         {
             // Save the selected list ID in the session
             HttpContext.Session.SetInt32("ListId", listId);
+            HttpContext.Session.SetInt32("ExistingList", 1);
+            var id = HttpContext.Session.GetInt32("UserId");
 
-            var list = _dataAccess.GetListById(listId);
+            var list = _dataAccess.GetListById((int)id);
+
             if (list == null)
             {
                 // Handle the case where the list is not found
@@ -321,8 +346,6 @@ public class CartController : BaseController
             return RedirectToAction("Login", "Auth");
         }
     }
-
-
 
     [HttpPost]
     public IActionResult UpdateListName(int listId, string newListName)
@@ -389,9 +412,6 @@ public class CartController : BaseController
         }
     }
 
-
-
-
     [HttpPost]
     [Route("logout")]
     public IActionResult Logout()
@@ -408,14 +428,15 @@ public class CartController : BaseController
     }
 
     [HttpPost]
-    public IActionResult DeleteProduce(int itemId, int userId)
+    public IActionResult DeleteProduce(int itemId)
     {
-        int listId = 0;
-        HttpContext.Session.SetInt32("ListId", listId);
+        var userID = HttpContext.Session.GetInt32("UserId") ?? 0;
+        var listID = HttpContext.Session.GetInt32("ListId") ?? 0;
+
         try
         {
             // Call the DeleteProduce method in your data access layer
-            _dataAccess.DeleteProduce(itemId, userId, listId);
+            _dataAccess.DeleteProduce(listID, itemId, userID);
 
             // Return a success response 
             return Ok();

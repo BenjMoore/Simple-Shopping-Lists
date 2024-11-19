@@ -74,7 +74,7 @@
                     <tbody>
                         @foreach (var listGroup in Model.GroupBy(l => l.ListID))
                         {
-                            var count = @listGroup.Count();
+                            var count = @listGroup.Count() - 1;
                             var firstItem = listGroup.First();
                             CartController cartController = new CartController();
                             <tr>
