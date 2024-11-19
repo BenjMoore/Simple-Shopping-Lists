@@ -91,7 +91,7 @@ namespace ICTPRG535_556.Controllers
             // Retrieve the selected list ID from session
            
             var userId = HttpContext.Session.GetInt32("UserId");
-            var listId = _dataAccess.GetCurrentListIdForUser(userId.Value);
+            var listId = HttpContext.Session.GetInt32("ListId")??0;//_dataAccess.GetCurrentListIdForUser(userId.Value);
             // Check if the selected list ID or user ID is null or invalid
             if ( listId <= 0 || !userId.HasValue || userId.Value <= 0)
             {

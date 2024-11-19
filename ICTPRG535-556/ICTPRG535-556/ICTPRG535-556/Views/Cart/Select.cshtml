@@ -57,6 +57,8 @@
     </script>
     <div class="container">
         <main role="main" class="pb-3">
+            <h2 style="text-align:center">Saved Lists</h2> <!-- Updated title here -->
+
             <section id="Table" style="left:0;">
                 <table>
                     <thead>
@@ -67,6 +69,7 @@
                             <th>List Name</th>
                             <th>Options</th>
                         </tr>
+
                     </thead>
                     <tbody>
                         @foreach (var listGroup in Model.GroupBy(l => l.ListID))
