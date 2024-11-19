@@ -10,15 +10,11 @@
 
     <h2 style="text-align:center;">
         <br /><br />
-        <a href="/Cart/CreateNewList?id=@loggedInUserId" class="button">
-            <button class="btn btn-primary" style="margin: 10px 20px;">New List</button>
-        </a>
-        <a href="/Cart/Select" class="button">
-            <button class="btn btn-primary" style="margin: 10px 20px;">Select / Delete List</button>
-        </a>
-        <a href="/" class="button">
-            <button class="btn btn-primary" style="margin: 10px 20px;">Add Item</button>
-        </a>
+        <div class="text-center">
+            <a href="/Cart/CurrentCart" class="btn btn-primary mx-2">Current Cart</a>
+            <a href="/Cart/Select" class="btn btn-primary mx-2">Select / Delete List</a>
+            <a href="/" class="btn btn-primary mx-2">Add Item</a>
+        </div>
     </h2>
     <p style="font-weight:bold">Cart Name: @ViewData["ListName"]</p>
     <p style="font-weight:bold">User Email: @ViewBag.Email</p>

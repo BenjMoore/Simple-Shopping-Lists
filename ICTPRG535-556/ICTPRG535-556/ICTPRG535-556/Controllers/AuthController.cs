@@ -53,7 +53,7 @@ public class AuthController : BaseController
 
         HttpContext.Session.SetInt32("ListId", newListID);
 
-        return RedirectToAction("SelectList", "Cart");
+        return RedirectToAction("CurrentCart", "Cart");
     }
 
 

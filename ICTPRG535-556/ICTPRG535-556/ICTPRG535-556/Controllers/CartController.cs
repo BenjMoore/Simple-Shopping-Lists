@@ -135,7 +135,7 @@ public class CartController : BaseController
     {
         SaveLists();
         CreateNewList();
-        return RedirectToAction("SelectList", "Cart");
+        return RedirectToAction("CurrentCart", "Cart");
     }
     public IActionResult Select()
     {

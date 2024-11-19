@@ -10,9 +10,11 @@
     <div class="container">
         @if (ViewBag.LoggedInUserId != null)
         {
-            <a href="/Cart/CreateNewList?id=@ViewBag.LoggedInUserId" class="button">
-                <button class="btn btn-primary" style="margin-left:20px; margin-right:20px; margin-top:10px;">New List</button>
-            </a>
+            <div class="text-center">
+                <a href="/Cart/CurrentCart" class="btn btn-primary mx-2">Current Cart</a>
+                <a href="/Cart/Select" class="btn btn-primary mx-2">Select / Delete List</a>
+                <a href="/" class="btn btn-primary mx-2">Add Item</a>
+            </div>
         }
     </div>
 
