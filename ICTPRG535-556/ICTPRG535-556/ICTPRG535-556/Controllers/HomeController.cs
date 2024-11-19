@@ -92,7 +92,7 @@ namespace ICTPRG535_556.Controllers
            
             var userId = HttpContext.Session.GetInt32("UserId");
             var listId = HttpContext.Session.GetInt32("ListId")??0;
-            int ExisingList = HttpContext.Session.GetInt32("ExisingList")??0;
+            int ExisingList = HttpContext.Session.GetInt32("ExistingList")??0;
             if (ExisingList == 1) 
             {
                 // Retrieve the list name from the database
@@ -111,7 +111,7 @@ namespace ICTPRG535_556.Controllers
                 Boolean flag = _dataAccess.DoesItemExistInCart(Convert.ToInt32(listId), itemId);
                 if (flag == false)
                 {
-                    _dataAccess.AddList(listDTO);
+                    _dataAccess.AddListFinalised(listDTO);
                     _dataAccess.UpdateItemQuantity(Convert.ToInt32(listId), itemId, 1);
                     _dataAccess.UpdateCartPrice(Convert.ToInt32(listId), itemId, 1);
                 }

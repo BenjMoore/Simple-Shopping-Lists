@@ -453,6 +453,15 @@ namespace DataMapper
                 dbConnection.Execute("INSERT INTO Lists (UserID,ItemID,ListID,ListName,Price,Quantity) VALUES (@UserId,@ItemID,@ListID,@ListName,@Price,@Quantity)", listDTO);
             }
         }
+        public void AddListFinalised(ListDTO listDTO)
+        {
+            using (IDbConnection dbConnection = new SqlConnection(connectionString))
+            {
+                dbConnection.Open();
+                // Insert a new list for the user
+                dbConnection.Execute("INSERT INTO Lists (UserID,ItemID,ListID,ListName,Price,Quantity,FinalisedDate) VALUES (@UserId,@ItemID,@ListID,@ListName,@Price,@Quantity,@FinalisedDate)", listDTO);
+            }
+        }
         public string GetListNameById(int listId)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))

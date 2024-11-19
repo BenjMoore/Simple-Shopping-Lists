@@ -115,31 +115,7 @@ public class CartController : BaseController
 
         return RedirectToAction("SelectList", "Cart");
     }
-    public IActionResult SaveExisitingList()
-    {
-        var loggedInUserId = HttpContext.Session.GetInt32("UserId") ?? 0;
-        HttpContext.Session.SetInt32("ExistingList",1);
-        // Calculate new list ID
-        var maxListId = _dataAccess.GetNewListIdForAll();
-        int newListID = maxListId > 0 ? maxListId : 1;
-
-        var newList = new ListDTO
-        {
-            UserID = loggedInUserId,
-            ListID = newListID,
-            ItemID = 0,
-            ListName = "Cart",
-            Quantity = 0,
-            FinalisedDate = DateTime.Now
-        };
-
-        _dataAccess.AddList(newList);
-
-
-        HttpContext.Session.SetInt32("ListId", newListID);
-
-        return RedirectToAction("SelectList", "Cart");
-    }
+   
     // This loads the select list page where you can select saved lists
     public void SaveLists()
     {
