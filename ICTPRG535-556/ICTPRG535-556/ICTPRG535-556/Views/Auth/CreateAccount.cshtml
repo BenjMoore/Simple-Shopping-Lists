@@ -18,7 +18,7 @@
 <div class="row">
     <img src="/img/logo.png" style="width: 150px; height: 150px;" />
     <div class="col-md-4">
-        <form method="post" action="CreateAccount">
+        <form method="post" action="CreateAccount" onsubmit="return validateForm()">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <!-- Email Field -->
@@ -31,8 +31,9 @@
 
             <!-- Password Field -->
             <div class="form-group">
-                <label for="Password" class="control-label">Password</label>
-                <input type="password" id="Password" name="password" class="form-control" />
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <br />
 
@@ -52,8 +53,28 @@
     </div>
 </div>
 
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+@section ValidationScripts {
+    @Html.Partial("_ValidationScriptsPartial")
+}
+
+@section CustomScripts {
+    <script>
+        function validateForm() {
+            const password = document.getElementById("Password").value;
+            const confirmPassword = document.getElementById("ConfirmPassword").value;
+            const minLength = 8;
+
+            if (password.length < minLength) {
+                alert(`Password must be at least ${minLength} characters long.`);
+                return false; // Prevent form submission
+            }
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false; // Prevent form submission
+            }
+
+            return true; // Allow form submission
+        }
+    </script>
 }

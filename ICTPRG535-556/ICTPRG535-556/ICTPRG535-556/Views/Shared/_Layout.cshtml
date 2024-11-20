@@ -8,9 +8,17 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ICTPRG535_556.styles.css" asp-append-version="true" />
 </head>
+
+
 <body class="light-mode">
     <header>
         <h1>Digital Shopping List</h1>
+        <div class="scrolling-marquee">
+            <img src="/img/logo.png" alt="Logo" />
+        </div>
+
+
+
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
@@ -55,5 +63,8 @@
     </script>
 
     @await RenderSectionAsync("Scripts", required: false)
+    @RenderSection("ValidationScripts", required: false)
+    @RenderSection("CustomScripts", required: false)
+
 </body>
 </html>

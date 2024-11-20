@@ -89,80 +89,81 @@ namespace ICTPRG535_556.Controllers
         public IActionResult AddToCart(int itemId)
         {
             // Retrieve the selected list ID from session
-           
-            var userId = HttpContext.Session.GetInt32("UserId");
-            var listId = HttpContext.Session.GetInt32("ListId")??0;
-            int ExisingList = HttpContext.Session.GetInt32("ExistingList")??0;
-            if (ExisingList == 1) 
+            if (HttpContext.Session.GetInt32("UserId").HasValue)
             {
-                // Retrieve the list name from the database
-                var listName = _dataAccess.GetListNameById(listId) ?? "";
-                var price = _dataAccess.GetProductPriceByItemId(itemId);
+                var userId = HttpContext.Session.GetInt32("UserId");
+                var listId = HttpContext.Session.GetInt32("ListId") ?? 0;
+                int ExisingList = HttpContext.Session.GetInt32("ExistingList") ?? 0;
+                if (ExisingList == 1)
+                {
+                    // Retrieve the list name from the database
+                    var listName = _dataAccess.GetListNameById(listId) ?? "";
+                    var price = _dataAccess.GetProductPriceByItemId(itemId);
 
-                var listDTO = new ListDTO
-                {
-                    ListID = listId,
-                    UserID = userId.Value,
-                    ListName = listName,
-                    ItemID = itemId,
-                    Price = price,
-                    FinalisedDate = DateTime.Now
-                };
-                Boolean flag = _dataAccess.DoesItemExistInCart(Convert.ToInt32(listId), itemId);
-                if (flag == false)
-                {
-                    _dataAccess.AddListFinalised(listDTO);
-                    _dataAccess.UpdateItemQuantity(Convert.ToInt32(listId), itemId, 1);
-                    _dataAccess.UpdateCartPrice(Convert.ToInt32(listId), itemId, 1);
+                    var listDTO = new ListDTO
+                    {
+                        ListID = listId,
+                        UserID = userId.Value,
+                        ListName = listName,
+                        ItemID = itemId,
+                        Price = price,
+                        FinalisedDate = DateTime.Now
+                    };
+                    Boolean flag = _dataAccess.DoesItemExistInCart(Convert.ToInt32(listId), itemId);
+                    if (flag == false)
+                    {
+                        _dataAccess.AddListFinalised(listDTO);
+                        _dataAccess.UpdateItemQuantity(Convert.ToInt32(listId), itemId, 1);
+                        _dataAccess.UpdateCartPrice(Convert.ToInt32(listId), itemId, 1);
+                    }
+                    // Perform quantity validation
+                    else
+                    {
+                        _dataAccess.UpdateItemQuantity(Convert.ToInt32(listId), itemId, 1);
+                        _dataAccess.UpdateCartPrice(Convert.ToInt32(listId), itemId, 1);
+                    }
+
+                    // Call the AddList method with the constructed listDTO object
+
                 }
-                // Perform quantity validation
                 else
                 {
-                    _dataAccess.UpdateItemQuantity(Convert.ToInt32(listId), itemId, 1);
-                    _dataAccess.UpdateCartPrice(Convert.ToInt32(listId), itemId, 1);
+                    // Retrieve the list name from the database
+                    var listName = _dataAccess.GetListNameById(listId) ?? "";
+                    var price = _dataAccess.GetProductPriceByItemId(itemId);
+
+                    var listDTO = new ListDTO
+                    {
+                        ListID = listId,
+                        UserID = userId.Value,
+                        ListName = listName,
+                        ItemID = itemId,
+                        Price = price
+                    };
+                    Boolean flag = _dataAccess.DoesItemExistInCart(Convert.ToInt32(listId), itemId);
+                    if (flag == false)
+                    {
+                        _dataAccess.AddList(listDTO);
+                        _dataAccess.UpdateItemQuantity(Convert.ToInt32(listId), itemId, 1);
+                        _dataAccess.UpdateCartPrice(Convert.ToInt32(listId), itemId, 1);
+                    }
+                    // Perform quantity validation
+                    else
+                    {
+                        _dataAccess.UpdateItemQuantity(Convert.ToInt32(listId), itemId, 1);
+                        _dataAccess.UpdateCartPrice(Convert.ToInt32(listId), itemId, 1);
+                    }
+
+                    // Call the AddList method with the constructed listDTO object
+
                 }
-
-                // Call the AddList method with the constructed listDTO object
-
-            }
-            else
-            {
-                // Retrieve the list name from the database
-                var listName = _dataAccess.GetListNameById(listId) ?? "";
-                var price = _dataAccess.GetProductPriceByItemId(itemId);
-
-                var listDTO = new ListDTO
+                // Check if the selected list ID or user ID is null or invalid
+                if (listId <= 0 || !userId.HasValue || userId.Value <= 0)
                 {
-                    ListID = listId,
-                    UserID = userId.Value,
-                    ListName = listName,
-                    ItemID = itemId,
-                    Price = price
-                };
-                Boolean flag = _dataAccess.DoesItemExistInCart(Convert.ToInt32(listId), itemId);
-                if (flag == false)
-                {
-                    _dataAccess.AddList(listDTO);
-                    _dataAccess.UpdateItemQuantity(Convert.ToInt32(listId), itemId, 1);
-                    _dataAccess.UpdateCartPrice(Convert.ToInt32(listId), itemId, 1);
+                    // Handle the case where no list is selected or user is not logged in
+                    return RedirectToAction("Index", "Home"); // Redirect to a suitable page
                 }
-                // Perform quantity validation
-                else
-                {
-                    _dataAccess.UpdateItemQuantity(Convert.ToInt32(listId), itemId, 1);
-                    _dataAccess.UpdateCartPrice(Convert.ToInt32(listId), itemId, 1);
-                }
-
-                // Call the AddList method with the constructed listDTO object
-
             }
-            // Check if the selected list ID or user ID is null or invalid
-            if ( listId <= 0 || !userId.HasValue || userId.Value <= 0)
-            {
-                // Handle the case where no list is selected or user is not logged in
-                return RedirectToAction("Index", "Home"); // Redirect to a suitable page
-            }
-           
             // Redirect back to the index page
             return RedirectToAction("Index", "Home");
         }

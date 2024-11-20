@@ -173,7 +173,6 @@ public class CartController : BaseController
     }
 
     // this loads the current cart
-    
     public IActionResult CurrentCart()
     {
         if (HttpContext.Session.GetInt32("UserId").HasValue)
@@ -252,7 +251,6 @@ public class CartController : BaseController
             return RedirectToAction("Login", "Auth"); // Redirect to login if not logged in
         }
     }
-
     
     public IActionResult SelectList(int listId)
     {

@@ -50,6 +50,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {
+        // Handle the search form submission
         $('#searchForm').submit(function (event) {
             event.preventDefault();
             $.get($(this).attr('action'), $(this).serialize(), function (data) {
@@ -57,6 +58,7 @@
             });
         });
 
+        // Clear the search input and reload all items
         $('#clearButton').click(function () {
             $('#searchInput').val('');
             $.get('@Url.Action("Index", "Home")', function (data) {
@@ -64,7 +66,18 @@
                 $('#searchResults').html(newCards);
             });
         });
-    });
 
+        // Add event listener to all "Add to Cart" buttons
+        $('#searchResults').on('submit', 'form', function (event) {
+            event.preventDefault(); // Prevent form submission
+            const productName = $(this).closest('.card').find('h3').text(); // Get product name
+
+            // Submit the form using AJAX
+            $.post($(this).attr('action'), $(this).serialize(), function () {
+                alert(`Product "${productName}" has been added to your list.`); // Popup notification
+            });
+        });
+    });
 </script>
+
 

@@ -31,8 +31,9 @@
 
             <!-- Password Field -->
             <div class="form-group">
-                <label for="Password" class="control-label">Password</label>
-                <input type="password" id="Password" name="password" class="form-control" />
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <br />
 

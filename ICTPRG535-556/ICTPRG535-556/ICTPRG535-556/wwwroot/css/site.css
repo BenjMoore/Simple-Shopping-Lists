@@ -16,12 +16,62 @@ body {
     color: var(--text-color);
     
 }
+.scrolling-marquee {
+    width: 100%;
+    overflow: hidden; /* Hides anything outside the container */
+    display: flex;
+}
 
+    .scrolling-marquee img {
+        width: 150px;
+        height: 150px;
+        animation: scrollLeft 10s linear infinite; /* Adjust the duration (10s) to control the speed */
+    }
+
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(100%); /* Start from the right outside */
+    }
+
+    100% {
+        transform: translateX(-100%); /* End at the left outside */
+    }
+}
+/* Header Styling */
 header {
-    background-color: #145c9e;
-    color: #fff;
+    background-color: #145c9e; /* Brand color */
+    color: #ffffff;
     padding: 20px;
     text-align: center;
+    font-size: 1.5rem; /* Consistent font size */
+}
+
+/* Footer Styling */
+footer {
+    background-color: #145c9e; /* Brand color */
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9rem; /* Smaller text for footer */
+}
+
+/* Light Mode Adjustments */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.dark-mode header {
+    background-color: #333333; /* Dark mode header */
+    color: #ffffff;
+}
+
+.dark-mode footer {
+    background-color: #333333; /* Dark mode footer */
+    color: #ffffff;
 }
 
 nav ul {
