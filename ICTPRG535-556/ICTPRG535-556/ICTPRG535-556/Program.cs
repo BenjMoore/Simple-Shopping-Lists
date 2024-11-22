@@ -13,8 +13,6 @@ namespace ICTPRG535_556
     {
         public static void Main(string[] args)
         {
-            
-            
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -41,7 +39,6 @@ namespace ICTPRG535_556
             services.AddControllersWithViews();
         }
 
-
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -51,11 +48,14 @@ namespace ICTPRG535_556
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
+                app.UseHsts();  // Enforces HTTPS, improving security
             }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            // Security Headers to prevent XSS and Script Injection
+          
 
             app.UseRouting();
             app.UseSession();

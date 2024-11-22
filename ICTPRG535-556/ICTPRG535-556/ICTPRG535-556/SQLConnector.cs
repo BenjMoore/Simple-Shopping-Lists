@@ -94,7 +94,7 @@ namespace DataMapper
                     SqlCommand createTableProduceCommand = new SqlCommand(createTableProduceQuery, connection);
                     createTableProduceCommand.ExecuteNonQuery();
                     // Populate the tables if they are empty.
-                    string plainPassword = "Test";
+                    string plainPassword = "Test123$";
                     string hashedPassword = PasswordUtility.HashPassword(plainPassword);
                     string checkAndPopulateTablesQuery = $@"
             USE ShoppingList;

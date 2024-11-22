@@ -71,12 +71,13 @@
         $('#searchResults').on('submit', 'form', function (event) {
             event.preventDefault(); // Prevent form submission
             const productName = $(this).closest('.card').find('h3').text(); // Get product name
-
-            // Submit the form using AJAX
-            $.post($(this).attr('action'), $(this).serialize(), function () {
+                // Submit the form using AJAX
+                $.post($(this).attr('action'), $(this).serialize(), function() {
                 alert(`Product "${productName}" has been added to your list.`); // Popup notification
-            });
-        });
+                });
+
+                });
+                    
     });
 </script>
 

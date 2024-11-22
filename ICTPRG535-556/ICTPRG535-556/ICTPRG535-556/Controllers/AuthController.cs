@@ -109,8 +109,11 @@ public class AuthController : BaseController
 
     [HttpPost]
     [Route("CreateAccount")]
-    public IActionResult ProcessCreateAccount(string email, string password, string confirmPassword)
+    public IActionResult ProcessCreateAccount(string Email, string Password, string ConfirmPassword)
     {
+        string email = Email.Trim();
+        string password = Password.Trim();
+        string confirmPassword = ConfirmPassword.Trim();
         // Check if email or password is provided
         if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword))
         {

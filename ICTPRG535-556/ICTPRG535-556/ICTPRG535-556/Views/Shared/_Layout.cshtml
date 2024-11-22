@@ -28,7 +28,7 @@
                 <li><a href="/Login">Login</a></li>
 
                 <li>
-                    <a href="javascript:void(0);" class="btn btn-primary" id="cartButton" style="color: white; padding: 5px 15px; border-radius: 5px;">
+                    <a href="/Cart/CurrentCart" class="btn btn-primary" id="cartButton" style="color: white; padding: 5px 15px; border-radius: 5px;">
                         <span class="glyphicon glyphicon-shopping-cart"></span> Cart
                     </a>
                 </li>
@@ -55,13 +55,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
-    <script>
-        // Redirect to the cart page when clicking the Cart button
-        $('#cartButton').on('click', function () {
-            window.location.href = '@Url.Action("CurrentCart", "Cart")';
-        });
-    </script>
-
+   
     @await RenderSectionAsync("Scripts", required: false)
     @RenderSection("ValidationScripts", required: false)
     @RenderSection("CustomScripts", required: false)
